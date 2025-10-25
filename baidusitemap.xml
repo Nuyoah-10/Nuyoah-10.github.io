@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite-url/en/Test-Blog/</loc>
+    <loc>https://nuyoah-10.github.io/cn/Test-Blog/</loc>
     <lastmod>2025-10-24</lastmod>
   </url>
   <url>
-    <loc>http://yoursite-url/cn/Test-Blog/</loc>
+    <loc>https://nuyoah-10.github.io/en/Test-Blog/</loc>
     <lastmod>2025-10-24</lastmod>
   </url>
 </urlset> 
