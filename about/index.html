@@ -141,6 +141,7 @@
         tex2jax: {
           inlineMath: [ ['$','$'], ["\\(","\\)"] ],
           processEscapes: true
+          processClass: 'math-tex'
         }
       });
     </script>
@@ -258,9 +259,22 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -279,23 +293,10 @@
           
           
           
-          
-          
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              归档
               
               
             </a>
@@ -599,11 +600,11 @@
 <div class="widget">
   <ul>
     
-    <a href="../en/Test-Blog/">
+    <a href="../cn/Test-Blog/">
       <li>Test Blog</li>
     </a>
     
-    <a href="../cn/Test-Blog/">
+    <a href="../en/Test-Blog/">
       <li>Test Blog</li>
     </a>
     
@@ -1126,20 +1127,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
