@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nuyoah-10.github.io/cn/Test-Blog/</loc>
-    <lastmod>2025-10-24</lastmod>
+    <loc>https://nuyoah-10.github.io/cn/P3%E8%AF%BE%E4%B8%8B%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2025-11-01</lastmod>
   </url>
   <url>
     <loc>https://nuyoah-10.github.io/en/Test-Blog/</loc>
+    <lastmod>2025-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nuyoah-10.github.io/cn/Test-Blog/</loc>
     <lastmod>2025-10-24</lastmod>
   </url>
 </urlset> 

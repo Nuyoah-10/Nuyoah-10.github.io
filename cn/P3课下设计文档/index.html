@@ -153,10 +153,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://nuyoah-10.github.io/archives/">
+  <link rel="canonical" href="https://nuyoah-10.github.io/cn/P3课下设计文档/">
   <title>
     
-      stay hungry stay foolish
+      P3-单周期CPU 设计文档 - stay hungry stay foolish
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -314,29 +314,7 @@
           <!-- LangSelect -->
           
           
-          <!-- LangSelect start -->
-          <!-- LangSelect -->
-<li>
-  <a id="lang-select-label"><i class="fa fa-globe"></i>
-    <span>
-      简体中文
-    </span>
-    <select id="lang-select" data-canonical="archives/index.html">
-      
-      
-      <option value="cn"  selected >
-        简体中文
-      </option>
-      
-      <option value="en" >
-        English
-      </option>
-      
-    </select>
-  </a>
-</li>
-
-          <!-- LangSelect end -->
+          
           
           
         </ul>
@@ -388,19 +366,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/tag_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/tag_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -422,10 +400,44 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Nuyaoh&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">HAPPY   EVERYDAY</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#CO" title="CO">CO</a>
+              
+              <a class="tag" href="/tags/#P3" title="P3">P3</a>
+              
+            </div>
+            <h1>P3-单周期CPU 设计文档</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Nuyoah on
+              2025-11-01
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">7</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.9k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -466,243 +478,866 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+        <h2 id="设计思路">设计思路</h2>
+<h3 id="流程步骤">流程步骤</h3>
+<ul>
+<li>分析每条指令RTL，梳理总结数据通路设计需求</li>
+<li>选择恰当数据通路功能部件</li>
+<li>根据RTL分析部件间连接，组装数据通路</li>
+<li>根据RTL，分析功能部件执行功能，反推控制信号取值</li>
+<li>生成控制器</li>
+<li>用不同数据测试搭建单周期CPU</li>
+</ul>
+<h3 id="需求概括">需求概括</h3>
+<ul>
+<li>32位单周期处理器</li>
+<li>支持指令集为：add,sub,ori,lw,sw,beq,lui,nop</li>
+<li>包含基础模块 <strong>IFU</strong>  (取指令), <strong>Splitter</strong>  (拆分32位机器码), <strong>Controller</strong>  (控制器), <strong>GRF</strong>  (寄存器堆), <strong>ALU</strong>  (算数单元), <strong>DM</strong>  (数据存储器), <strong>EXT</strong>  (扩展立即数), <strong>PC</strong>，<strong>NPC</strong>  (地址计算)</li>
+</ul>
+<h3 id="指令集机器码规范">指令集机器码规范</h3>
+<p>nop机器码全零，不做特殊考虑</p>
+<h4 id="R型">R型</h4>
+<ul>
+<li>
+<p><strong>add</strong><br>
+<img src="add.png" alt="add"></p>
+</li>
+<li>
+<p><strong>sub</strong><br>
+<img src="sub1.png" alt="sub"><br>
+<img src="sub2.png" alt="sub"></p>
+</li>
+</ul>
+<h4 id="I型">I型</h4>
+<ul>
+<li>
+<p><strong>ori</strong><br>
+<img src="ori.png" alt="ori"></p>
+</li>
+<li>
+<p><strong>lw</strong><br>
+<img src="lw1.png" alt="lw"><br>
+<img src="lw2.png" alt="add"></p>
+</li>
+<li>
+<p><strong>sw</strong><br>
+<img src="sw.png" alt="sw"></p>
+</li>
+<li>
+<p><strong>beq</strong><br>
+<img src="beq.png" alt="beq"></p>
+</li>
+<li>
+<p><strong>lui</strong><br>
+<img src="lui.png" alt="lui"></p>
+</li>
+</ul>
+<h4 id="J型">J型</h4>
+<ul>
+<li><strong>j</strong> (自选)<br>
+<img src="j.png" alt="j"></li>
+</ul>
+<h3 id="构建数据通路部件">构建数据通路部件</h3>
+<p>总体架构图 (来源于课上PPT)</p>
+<p><img src="PPT%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84.png" alt="架构图"></p>
+<p>logisim中实现电路的总体架构:</p>
+<p><img src="logisim%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="架构图"></p>
+<h4 id="PC">PC</h4>
+<p><strong>功能</strong> ：输出当前指令地址</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In</td>
+<td>输入NPC计算出的PC值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>rst</td>
+<td>异步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Out</td>
+<td>输出当前指令地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>用寄存器存储当前地址,由于起始地址为0x3000，输出时记得加上。<br>
+<img src="pc.png" alt="PC">  <img src="pc2.png" alt="PC"></p>
+<h4 id="NPC">NPC</h4>
+<p><strong>功能</strong> ：根据不同指令，输出下一周期跳转地址</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC</td>
+<td>当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>imm26</td>
+<td>26位立即数(j跳转)</td>
+<td>26</td>
+<td>I</td>
+</tr>
+<tr>
+<td>imm16</td>
+<td>16位立即数(用于beq跳转)</td>
+<td>16</td>
+<td>I</td>
+</tr>
+<tr>
+<td>j</td>
+<td>控制信号(是否为j型指令)</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>br</td>
+<td>控制信号(是否是beq指令)</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>控制信号(是否满足beq跳转条件)</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>NPC</td>
+<td>输出要跳转地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p><img src="NPC.png" alt="PC"></p>
+<h4 id="IM">IM</h4>
+<p><strong>功能</strong> ：根据地址取出对应指令</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC</td>
+<td>当前指令地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>指令编码</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>由于用ROM (只读) 实现，容量为4096 × 32bit, 所以地址只需要12位。<br>
+另外由于PC地址间隔为4，但ROM间隔为1，所以实际需要除以4，即取PC的2-13位即可。</p>
+<p><img src="IM.png" alt="PC"></p>
+<h4 id="Splitter">Splitter</h4>
+<p><strong>功能</strong> ：将32位指令拆分，方便后续判断指令类型</p>
+<p>只是拆位为后续方便判断与操作。</p>
+<p><img src="Splitter.png" alt="PC"></p>
+<h4 id="GRF">GRF</h4>
+<p><strong>功能</strong> :寄存器堆，实现寄存器的读出和写入</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>读取第一个寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>读取第二个寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>写入的寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>WD</td>
+<td>写回的值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>rst</td>
+<td>异步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>RD1</td>
+<td>第一个寄存器值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>RD2</td>
+<td>第二个寄存器值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>GRF局部图：注意 $0 寄存器数值恒定为0，不受写入影响</p>
+<p><img src="GRF.png" alt="PC"></p>
+<h4 id="ALU">ALU</h4>
+<p><strong>功能</strong> : 核心，实现计算功能</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALUOp</td>
+<td>计算类别控制信号</td>
+<td>2</td>
+<td>I</td>
+</tr>
+<tr>
+<td>in1</td>
+<td>第一个计算数</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>in2</td>
+<td>第二个计算数</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>out</td>
+<td>计算结果</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>ALU局部图：简单的组合电路<br>
+<img src="ALU.png" alt="PC"></p>
+<h4 id="DM">DM</h4>
+<p><strong>功能</strong> : 存储数据</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addr</td>
+<td>待操作内存地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>WD</td>
+<td>准备写入的数据</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>DMWr</td>
+<td>写使能控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>lw</td>
+<td>读取控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>rst</td>
+<td>异步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>当前地址指向内存的值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>DM局部图：注意 RAM 选用 <strong>Separate load and store ports</strong> 模式<br>
+<img src="DM.png" alt="PC"></p>
+<h4 id="EXT">EXT</h4>
+<p><strong>功能</strong> : 实现不同类别的扩展</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imm16</td>
+<td>待扩展立即数</td>
+<td>16</td>
+<td>I</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>扩展类别控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>imm32</td>
+<td>扩展后32位立即数</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p>DM局部图：由RTL，lw 和 sw 实现 <strong>符号扩展</strong> ，其余 I 型指令实现 <strong>0 扩展</strong><br>
+<img src="EXT.png" alt="PC"></p>
+<h3 id="生成控制器">生成控制器</h3>
+<p>在以上构建过程中，不同部件需要用到一些不同的控制信号，因此生成Controller集中管理。<br>
+Contoller主要分为 <strong>识别</strong> 和 <strong>生成</strong> 两部分：</p>
+<ul>
+<li><strong>识别</strong>：通过 comparator 元件比较32位指令的opcode 和 function 部分，判别该指令编码的具体类别</li>
+<li><strong>生成</strong>：通过写出控制信号的真值表，用 <strong>或门</strong> 集中生成控制信号</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>位置</th>
+<th>功能简述</th>
+<th>名称</th>
+<th>位置</th>
+<th>功能简述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXTOp</td>
+<td>EXT</td>
+<td>立即数扩展类型</td>
+<td>DMWr</td>
+<td>DM</td>
+<td>写使能信号</td>
+</tr>
+<tr>
+<td>BSel</td>
+<td>ALU前</td>
+<td>判断in2是rt还是立即数</td>
+<td>WDSel</td>
+<td>GRF前</td>
+<td>寄存器写入ALU计算结果还是内存数值</td>
+</tr>
+<tr>
+<td>ALUOp</td>
+<td>ALU</td>
+<td>计算类型</td>
+<td>WRSel</td>
+<td>GRF前</td>
+<td>写入寄存器是rt还是rd</td>
+</tr>
+<tr>
+<td>Br</td>
+<td>NPC</td>
+<td>是否是beq指令</td>
+<td>RFWr</td>
+<td>GRF</td>
+<td>寄存器写使能信号</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>NPC</td>
+<td>beq比较是否相等</td>
+<td>j</td>
+<td>NPC</td>
+<td>是否是j指令</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>EXTOp</th>
+<th>BSel</th>
+<th>ALUOp</th>
+<th>Br</th>
+<th>DMWr</th>
+<th>WDSel</th>
+<th>WRSel</th>
+<th>RFWr</th>
+<th>j</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>0</td>
+<td>0</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>0</td>
+<td>0</td>
+<td>01</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ori</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>lw</td>
+<td>1</td>
+<td>1</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>sw</td>
+<td>1</td>
+<td>1</td>
+<td>00</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>beq</td>
+<td>0</td>
+<td>0</td>
+<td>01</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>lui</td>
+<td>0</td>
+<td>1</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>j</td>
+<td>0</td>
+<td>0</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Controller 局部图：<br>
+<img src="controller.png" alt="PC"></p>
+<h3 id="组装数据通路">组装数据通路</h3>
+<p>根据指令的RTL，选取需要的部件，建立正确的连接关系。</p>
+<h2 id="测试方案">测试方案</h2>
+<h2 id="思考题">思考题</h2>
+<ul>
+<li>上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。</li>
+</ul>
+<blockquote>
+<p>以Splitter为界分成两个状态机。计算PC值的部分是一个Moore型状态机，PC块的寄存器负责状态存储功能，NPC负责状态转移功能；控制器及寄存器堆等后半部分是Mealy型状态机，GRF和RAM负责状态存储，主要由ALU实现状态转移。</p>
+</blockquote>
+<ul>
+<li>现在我们的模块中 IM 使用 ROM， DM 使用 RAM， GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。</li>
+</ul>
+<blockquote>
+<p>我认为比较合理。IM的功能为读取指令，用ROM实现只读功能，避免将指令误修改；DM的功能为读写数据内存，用可供读写的RAM同时实现；GRF需要保存当前寄存器的值，并发挥状态机的存储功能，用寄存器可以实现。只是需要关注寄存器的初值问题。</p>
+</blockquote>
+<ul>
+<li>在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。</li>
+</ul>
+<blockquote>
+<p>设计了NPC组合电路模块，单独根据不同控制信号实现计算 Next_PC 值；把当前PC值只保留一个寄存器放在main电路中，存储和转移功能分开管理，更清晰。</p>
+</blockquote>
+<ul>
+<li>事实上，实现 nop 空指令，我们并不需要将它加入控制信号真值表，为什么？</li>
+</ul>
+<blockquote>
+<p>nop的机器码为全0，流程中不会直接改变电路某些值，从输出结果来看无实际功效。而目前的电路中已经满足此现象。</p>
+</blockquote>
+<ul>
+<li>阅读 Pre 的 “MIPS 指令集及汇编语言” 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</li>
+</ul>
+<blockquote>
+<p>覆盖到了一些情况，但强度仍不足。<br>
+如：未考虑测试向 $0 寄存器写入数据；边界数测试较少；beq相关指令位置考虑较为单一，可以将loop放在beq前测试负或零偏移量是否正确；涉及到的寄存器不够全面，难以检测GRF正确性等。</p>
+</blockquote>
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
 
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2025">
-          <span class="tag-text">2025</span>
-        </span>
-        <ul>
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            11-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/P3课下设计文档/" style="color: #0085a1">
-              <span>
-                P3-单周期CPU 设计文档
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
           
-          <li>
-            10-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Test-Blog/" style="color: #0085a1">
-              <span>
-                Test Blog
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/en/Test-Blog/" style="color: #0085a1">
-              <span>
-                Test Blog
-                
-              </span>
-            </a>
+          <li class="next">
+            <a href="/en/Test-Blog/" data-toggle="tooltip" data-placement="top" title="Test Blog">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=P3-单周期CPU 设计文档&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/P3课下设计文档/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: '',
+      id: 'Sat Nov 01 2025 11:25:20 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
-    </div>
-  </div>
-</div>
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">设计思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%81%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">流程步骤</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9C%80%E6%B1%82%E6%A6%82%E6%8B%AC"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">需求概括</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E9%9B%86%E6%9C%BA%E5%99%A8%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">指令集机器码规范</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#R%E5%9E%8B"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">R型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#I%E5%9E%8B"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">I型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#J%E5%9E%8B"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">J型</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9E%84%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E9%83%A8%E4%BB%B6"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">构建数据通路部件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#PC"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">PC</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#NPC"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">NPC</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#IM"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">IM</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Splitter"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">Splitter</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#GRF"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">GRF</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ALU"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">ALU</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#DM"><span class="toc-nav-number">1.4.7.</span> <span class="toc-nav-text">DM</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#EXT"><span class="toc-nav-number">1.4.8.</span> <span class="toc-nav-text">EXT</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E6%88%90%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">生成控制器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E8%A3%85%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">组装数据通路</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">测试方案</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">思考题</span></a></li></ol>
+        
+        </div>
+      </aside>
     
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#CO" title="CO">CO</a>
+            
+            <a class="tag" href="/tags/#P3" title="P3">P3</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#CO" title="CO" rel="1">CO</a>
-    
-    
-    
-    <a href="/tags/#P3" title="P3" rel="1">P3</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="2">Hexo-Theme-LiveMyLife</a>
-    
-    
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</section>
+</article>
 
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
 
-    
-    <img id="avatar_pic" src="/img/avatar/Nuyoah.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
 
-    
-    <p>祝每个人开心每一天！</p>
-    
+<!-- anchorjs end -->
 
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Nuyoah-10">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../cn/P3%E8%AF%BE%E4%B8%8B%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/">
-      <li>P3-单周期CPU 设计文档</li>
-    </a>
-    
-    <a href="../en/Test-Blog/">
-      <li>Test Blog</li>
-    </a>
-    
-    <a href="../cn/Test-Blog/">
-      <li>Test Blog</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2025/11/">November 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="2025/10/">October 2025</a><span class="archive-list-count">2</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#CO">
-      <li>CO</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
-  </div>
-</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

@@ -259,19 +259,6 @@
           
           
           <li>
-            <a href="/categories/">
-              
-              分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          
-          
-          <li>
             <a href="/about/">
               
               关于
@@ -283,9 +270,22 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
               
               
             </a>
@@ -294,9 +294,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/tags/">
               
-              归档
+              标签
               
               
             </a>
@@ -498,11 +498,13 @@
         <ul>
           
           <li>
-            10-24
+            11-01
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/en/Test-Blog/" style="color: #0085a1">
+            <a href="/cn/P3课下设计文档/" style="color: #0085a1">
               <span>
-                Test Blog
+                P3-单周期CPU 设计文档
+                
+                -- cn
                 
               </span>
             </a>
@@ -516,6 +518,17 @@
                 Test Blog
                 
                 -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            10-24
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/en/Test-Blog/" style="color: #0085a1">
+              <span>
+                Test Blog
                 
               </span>
             </a>
@@ -563,6 +576,14 @@
 <section>
   <h5><a href="/tags/">特色标签</a></h5>
   <div class="tags">
+    
+    
+    <a href="/tags/#CO" title="CO" rel="1">CO</a>
+    
+    
+    
+    <a href="/tags/#P3" title="P3" rel="1">P3</a>
+    
     
     
     <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="2">Hexo-Theme-LiveMyLife</a>
@@ -628,11 +649,15 @@
 <div class="widget">
   <ul>
     
-    <a href="../../cn/Test-Blog/">
-      <li>Test Blog</li>
+    <a href="../../cn/P3%E8%AF%BE%E4%B8%8B%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/">
+      <li>P3-单周期CPU 设计文档</li>
     </a>
     
     <a href="../../en/Test-Blog/">
+      <li>Test Blog</li>
+    </a>
+    
+    <a href="../../cn/Test-Blog/">
       <li>Test Blog</li>
     </a>
     
@@ -646,7 +671,7 @@
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/10/">October 2025</a><span class="archive-list-count">2</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/11/">November 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/10/">October 2025</a><span class="archive-list-count">2</span></li></ul>
 </div>
 
 
@@ -657,6 +682,10 @@
 <h5><a href="/categories/">categories</a></h5>
 <div class="widget">
   <ul>
+    
+    <a href="/categories/#CO">
+      <li>CO</li>
+    </a>
     
     <a href="/categories/#Hexo-Theme-LiveMyLife">
       <li>Hexo-Theme-LiveMyLife</li>
@@ -1155,5 +1184,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
