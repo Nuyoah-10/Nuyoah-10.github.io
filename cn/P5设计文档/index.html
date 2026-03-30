@@ -1,0 +1,2731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-xxxxxx-xx"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-xxxxxx-xx');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="keyword" content="Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax.config = {&#34;tex&#34;:{&#34;inlineMath&#34;:[[&#34;$&#34;,&#34;$&#34;],[&#34;\\\\(&#34;,&#34;\\\\)&#34;]]},&#34;svg&#34;:{&#34;fontCache&#34;:&#34;global&#34;}};
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+          processClass: 'math-tex'
+        }
+      });
+    </script>
+  
+
+  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://nuyoah-10.github.io/cn/P5设计文档/">
+  <title>
+    
+      P5 流水线CPU设计文档 - stay hungry stay foolish
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--dark">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'dark';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Nuyaoh&#39;s Blog</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/tag_bg.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/tag_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/vincent-white.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#CO" title="CO">CO</a>
+              
+              <a class="tag" href="/tags/#verilog" title="verilog">verilog</a>
+              
+              <a class="tag" href="/tags/#P5" title="P5">P5</a>
+              
+            </div>
+            <h1>P5 流水线CPU设计文档</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Nuyoah on
+              2025-11-12
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">14</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">3.6k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h2 id="设计思路">设计思路</h2>
+<h3 id="流程步骤">流程步骤</h3>
+<ul>
+<li>分析流水线CPU的层次架构，设计模块和接口</li>
+<li>理解好转发和暂停的条件</li>
+<li>设计译码方式和译码风格</li>
+<li>创建好单一模块后，连接好转发与阻塞部分</li>
+</ul>
+<h3 id="需求概括">需求概括</h3>
+<ul>
+<li>32位五级流水线处理器</li>
+<li>支持指令集为：add, sub, ori, lw, sw, beq, lui, jal, jr, nop（与单周期相同）</li>
+</ul>
+<h3 id="指令集机器码规范">指令集机器码规范</h3>
+<p>nop机器码全零，不做特殊考虑</p>
+<h4 id="R型">R型</h4>
+<ul>
+<li>
+<p><strong>add</strong><br>
+<img src="add.png" alt="add"></p>
+</li>
+<li>
+<p><strong>sub</strong><br>
+<img src="sub1.png" alt="sub"><br>
+<img src="sub2.png" alt="sub"></p>
+</li>
+<li>
+<p><strong>jr</strong>(注意 jr 是R型指令)<br>
+<img src="jr.png" alt="jr"></p>
+</li>
+</ul>
+<h4 id="I型">I型</h4>
+<ul>
+<li>
+<p><strong>ori</strong><br>
+<img src="ori.png" alt="ori"></p>
+</li>
+<li>
+<p><strong>lw</strong><br>
+<img src="lw1.png" alt="lw"><br>
+<img src="lw2.png" alt="add"></p>
+</li>
+<li>
+<p><strong>sw</strong><br>
+<img src="sw.png" alt="sw"></p>
+</li>
+<li>
+<p><strong>beq</strong><br>
+<img src="beq.png" alt="beq"></p>
+</li>
+<li>
+<p><strong>lui</strong><br>
+<img src="lui.png" alt="lui"></p>
+</li>
+</ul>
+<h4 id="J型">J型</h4>
+<ul>
+<li><strong>jal</strong><br>
+<img src="jal.png" alt="jal"></li>
+</ul>
+<h3 id="构建数据通路部件">构建数据通路部件</h3>
+<p>带转发的总体架构图：(阻塞部分及转发的控制信号未在图中标出)</p>
+<p><img src="P5CPU%E8%AE%BE%E8%AE%A1%E7%99%BD.png" alt="总体架构图"></p>
+<h4 id="顶层架构命名规范">顶层架构命名规范</h4>
+<table>
+<thead>
+<tr>
+<th>结构</th>
+<th>命名方式</th>
+<th>示例</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单独模块</td>
+<td>级_名称</td>
+<td>ALU</td>
+<td>E_ALU</td>
+</tr>
+<tr>
+<td>普通信号</td>
+<td>级_信号</td>
+<td>E级的PC+8</td>
+<td>E_PC8</td>
+</tr>
+<tr>
+<td>模块内部信号</td>
+<td>模块名_信号名</td>
+<td>PC的en信号</td>
+<td>PC_en</td>
+</tr>
+</tbody>
+</table>
+<h4 id="级间寄存器">级间寄存器</h4>
+<p><strong>D寄存器</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_en</td>
+<td>写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_clear</td>
+<td>空泡清零信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>F_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>F_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>F_instr</td>
+<td>指令</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_PC</td>
+<td>D级当前地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>D_PC8</td>
+<td>D级当前地址加8</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>D_instr</td>
+<td>指令</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p><strong>E寄存器</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_en</td>
+<td>写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_clear</td>
+<td>空泡清零信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_GRF_out1</td>
+<td>寄存器输出1</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_GRF_out2</td>
+<td>寄存器输出2</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_EXT_imm</td>
+<td>扩展后立即数</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_BSel</td>
+<td>判断ALUin2来源</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_ALUOp</td>
+<td>ALU计算类型</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_rs</td>
+<td>D级要读取的寄存器</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_rt</td>
+<td>D级要读取的寄存器</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_DMWr</td>
+<td>DM写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_GRF_out1</td>
+<td>寄存器输出1</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_GRF_out2</td>
+<td>寄存器输出2</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_EXT_imm</td>
+<td>扩展后立即数</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_BSel</td>
+<td>判断ALUin2来源</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_ALUOp</td>
+<td>ALU计算类型</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_rs</td>
+<td>E级要读取的寄存器</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_rt</td>
+<td>E级要读取的寄存器</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_DMWr</td>
+<td>DM写使能信号</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>E_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p><strong>M寄存器</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_en</td>
+<td>写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_clear</td>
+<td>空泡清零信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_ALUout</td>
+<td>ALU计算结果</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_GRF_out2</td>
+<td>寄存器输出2</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_rs</td>
+<td>E级要读取的寄存器</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_rt</td>
+<td>E级要读取的寄存器</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_DMWr</td>
+<td>DM写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>E_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_ALUout</td>
+<td>ALU计算结果</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_GRF_out2</td>
+<td>寄存器输出2</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_rs</td>
+<td>M级要读取的寄存器</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_rt</td>
+<td>M级要读取的寄存器</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_DMWr</td>
+<td>DM写使能信号</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>M_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<p><strong>W寄存器</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>W_en</td>
+<td>写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>W_clear</td>
+<td>空泡清零信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_PC8</td>
+<td>F级当前地址加8</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_ALUout</td>
+<td>ALU计算结果</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_DMout</td>
+<td>DM内存数据</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>I</td>
+</tr>
+<tr>
+<td>W_PC</td>
+<td>F级当前地址</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_PC8</td>
+<td>F级当前地址加8</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_ALUout</td>
+<td>ALU计算结果</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_DMout</td>
+<td>DM内存数据</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_GRF_A3</td>
+<td>寄存器写入地址</td>
+<td>5</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_WDSel</td>
+<td>寄存器写入数据选择</td>
+<td>2</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_RFWr</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_NPCSel</td>
+<td>地址类型</td>
+<td>1</td>
+<td>O</td>
+</tr>
+<tr>
+<td>W_t_new</td>
+<td>在D级产生需要的数据时间</td>
+<td>4</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h4 id="F级">F级</h4>
+<h5 id="PC">PC</h5>
+<p><strong>功能</strong> ：输出当前指令地址</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NPC</td>
+<td>输入NPC计算出的PC值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>PC_en</td>
+<td>PC写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>F_PC</td>
+<td>F级当前指令地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>F_PC8</td>
+<td>F级指令地址+8</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h5 id="NPC">NPC</h5>
+<p><strong>功能</strong> ：根据不同指令，输出下一周期跳转地址</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F_PC</td>
+<td>F级当前地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>imm26</td>
+<td>26位立即数(j跳转)</td>
+<td>26</td>
+<td>I</td>
+</tr>
+<tr>
+<td>imm16</td>
+<td>16位立即数(用于beq跳转)</td>
+<td>16</td>
+<td>I</td>
+</tr>
+<tr>
+<td>GRF_rs</td>
+<td>rs寄存器中的值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>NPC_Sel</td>
+<td>控制信号</td>
+<td>3</td>
+<td>I</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>NPC</td>
+<td>输出要跳转地址</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h5 id="IM">IM</h5>
+<p><strong>功能</strong> ：根据地址取出对应指令</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F_PC</td>
+<td>F级当前指令地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>instr</td>
+<td>指令编码</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h4 id="D级">D级</h4>
+<h5 id="Splitter">Splitter</h5>
+<p><strong>功能</strong> ：将32位指令拆分，方便后续判断指令类型</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module Splitter(</span><br><span class="line">    <span class="selector-tag">input</span> <span class="selector-attr">[31:0]</span> Instr,</span><br><span class="line">    output <span class="selector-attr">[5:0]</span> opcode,</span><br><span class="line">    output <span class="selector-attr">[4:0]</span> rs,</span><br><span class="line">    output <span class="selector-attr">[4:0]</span> rt,</span><br><span class="line">    output <span class="selector-attr">[4:0]</span> rd,</span><br><span class="line">    output <span class="selector-attr">[4:0]</span> shamt,</span><br><span class="line">    output <span class="selector-attr">[5:0]</span> funct,</span><br><span class="line">    output <span class="selector-attr">[25:0]</span> imm26,</span><br><span class="line">    output <span class="selector-attr">[15:0]</span> imm16</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<h5 id="GRF-Read">GRF(Read)</h5>
+<p><strong>功能</strong> :寄存器堆，实现寄存器的读出</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_PC</td>
+<td>当前指令地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>A1</td>
+<td>读取第一个寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>读取第二个寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>data_in</td>
+<td>写回的值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>out1</td>
+<td>第一个寄存器值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+<tr>
+<td>out2</td>
+<td>第二个寄存器值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h5 id="EXT">EXT</h5>
+<p><strong>功能</strong> : 实现不同类别的扩展</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>imm16</td>
+<td>待扩展立即数</td>
+<td>16</td>
+<td>I</td>
+</tr>
+<tr>
+<td>EXTOp</td>
+<td>扩展类别控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>ext_imm</td>
+<td>扩展后32位立即数</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h5 id="CMP-新增">CMP(新增)</h5>
+<p><strong>功能</strong> : 根据指令类型判断是否符合跳转条件</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inA</td>
+<td>待比较数1</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>inB</td>
+<td>扩展类别控制信号</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>type</td>
+<td>扩展类别控制信号</td>
+<td>2</td>
+<td>I</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>是否符合跳转条件</td>
+<td>1</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h4 id="E级">E级</h4>
+<h5 id="ALU">ALU</h5>
+<p><strong>功能</strong> : 核心，实现计算功能</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALUOp</td>
+<td>计算类别控制信号</td>
+<td>3</td>
+<td>I</td>
+</tr>
+<tr>
+<td>in1</td>
+<td>第一个计算数</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>in2</td>
+<td>第二个计算数</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>ALUout</td>
+<td>计算结果</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h4 id="M级">M级</h4>
+<h5 id="DM">DM</h5>
+<p><strong>功能</strong> : 存储数据</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>M_PC</td>
+<td>地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>DMWr</td>
+<td>写使能控制信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Addr</td>
+<td>待操作内存地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>in_data</td>
+<td>准备写入的数据</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>DM_out</td>
+<td>当前地址指向内存的值</td>
+<td>32</td>
+<td>O</td>
+</tr>
+</tbody>
+</table>
+<h4 id="W级">W级</h4>
+<h5 id="GRF-Write">GRF(Write)</h5>
+<p><strong>功能</strong> :寄存器堆，实现寄存器的写入</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>grf_we(RFWr)</td>
+<td>寄存器写使能信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>D_PC</td>
+<td>当前指令地址</td>
+<td>32</td>
+<td>I</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>写入的寄存器编号</td>
+<td>5</td>
+<td>I</td>
+</tr>
+<tr>
+<td>data_in</td>
+<td>写回的值</td>
+<td>32</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<h4 id="译码方式">译码方式</h4>
+<p>采取集中式译码，用单一Controller生成信号，然后用寄存器在级间传递。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>位置</th>
+<th>功能简述</th>
+<th>名称</th>
+<th>位置</th>
+<th>功能简述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXTOp</td>
+<td>EXT</td>
+<td>立即数扩展类型</td>
+<td>DMWr</td>
+<td>DM</td>
+<td>写使能信号</td>
+</tr>
+<tr>
+<td>BSel</td>
+<td>ALU前</td>
+<td>判断in2是rt还是立即数</td>
+<td>WDSel</td>
+<td>GRF前</td>
+<td>寄存器写入ALU计算结果还是内存数值</td>
+</tr>
+<tr>
+<td>ALUOp</td>
+<td>ALU</td>
+<td>计算类型</td>
+<td>WRSel</td>
+<td>GRF前</td>
+<td>写入寄存器是rt还是rd</td>
+</tr>
+<tr>
+<td>NPCSel</td>
+<td>NPC</td>
+<td>指令类型</td>
+<td>RFWr</td>
+<td>GRF</td>
+<td>寄存器写使能信号</td>
+</tr>
+<tr>
+<td>zero</td>
+<td>NPC</td>
+<td>beq比较是否相等</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>EXTOp</th>
+<th>BSel</th>
+<th>ALUOp</th>
+<th>NPCSel</th>
+<th>DMWr</th>
+<th>WDSel</th>
+<th>WRSel</th>
+<th>RFWr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add</td>
+<td>0</td>
+<td>0</td>
+<td>00</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>0</td>
+<td>0</td>
+<td>01</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ori</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lw</td>
+<td>1</td>
+<td>1</td>
+<td>00</td>
+<td>00</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sw</td>
+<td>1</td>
+<td>1</td>
+<td>00</td>
+<td>00</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>beq</td>
+<td>0</td>
+<td>0</td>
+<td>01</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>lui</td>
+<td>0</td>
+<td>1</td>
+<td>11</td>
+<td>00</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jr</td>
+<td>0</td>
+<td>0</td>
+<td>00</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>jal</td>
+<td>0</td>
+<td>0</td>
+<td>00</td>
+<td>01</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Controller控制信号图 (来源于课上PPT)</p>
+<p><img src="PPT%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84.png" alt="架构图"></p>
+<h4 id="阻塞与转发模块">阻塞与转发模块</h4>
+<h5 id="转发部分">转发部分</h5>
+<p>根据设计有 <strong>15条</strong> 转发通路（图中蓝色线部分）</p>
+<p><img src="P5CPU%E8%AE%BE%E8%AE%A1%E7%99%BD.png" alt="通路设计"></p>
+<p>其中W级到D级的转发在 <strong>GRF内部</strong> 实现，其余13条转发通路在HCU模块及顶层电路中实现。</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>终点</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M级ALUout</td>
+<td>D级GRF_out1</td>
+<td>D_GRFou1_from_M_ALUout</td>
+</tr>
+<tr>
+<td></td>
+<td>D级GRF_out2</td>
+<td>D_GRFou2_from_M_ALUout</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin1</td>
+<td>E_ALUin1_from_M_ALUout</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin1</td>
+<td>E_ALUin2_from_M_ALUout</td>
+</tr>
+<tr>
+<td>W级GRF_D</td>
+<td>D级GRF_out1</td>
+<td>D_GRFou1_from_W_GRFD</td>
+</tr>
+<tr>
+<td></td>
+<td>D级GRF_out2</td>
+<td>D_GRFou2_from_W_GRFD</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin1</td>
+<td>E_ALUin1_from_W_GRFD</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin2</td>
+<td>E_ALUin2_from_W_GRFD</td>
+</tr>
+<tr>
+<td></td>
+<td>M级DMind</td>
+<td>M_DMind_from_W_GRFD</td>
+</tr>
+<tr>
+<td>E级NPC8</td>
+<td>D级GRF_out1</td>
+<td>D_GRFou1_from_E_NPC8</td>
+</tr>
+<tr>
+<td></td>
+<td>D级GRF_out2</td>
+<td>D_GRFou2_from_E_NPC8</td>
+</tr>
+<tr>
+<td>M级NPC8</td>
+<td>D级GRF_out1</td>
+<td>D_GRFou1_from_M_NPC8</td>
+</tr>
+<tr>
+<td></td>
+<td>D级GRF_out2</td>
+<td>D_GRFou2_from_M_NPC8</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin1</td>
+<td>E_ALUin1_from_M_NPC8</td>
+</tr>
+<tr>
+<td></td>
+<td>E级ALUin1</td>
+<td>E_ALUin2_from_M_NPC8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>转发条件</strong> :</p>
+<ul>
+<li>读寄存器等于写寄存器编号且不为0</li>
+<li>写寄存器使能有效</li>
+<li><code>t_use</code>和<code>t_new</code>都存在且<code>t_use &gt;= t_new</code></li>
+</ul>
+<h5 id="阻塞部分">阻塞部分</h5>
+<p>寄存器写使能部分：E、M、W级寄存器 <code>en=1,clear=0</code><br>
+只在D级阻塞，若需阻塞，则<br>
+<code>PC_en = D_en = 0; E_clear = 1;</code><br>
+PC和D级寄存器保持不变，E级寄存器clear相当于插入空泡。</p>
+<p><strong>阻塞条件</strong> :</p>
+<ul>
+<li>读寄存器等于写寄存器编号且不为0</li>
+<li>写寄存器使能有效</li>
+<li><code>t_use</code>和<code>t_new</code>都存在且<code>t_use &lt; t_new</code></li>
+</ul>
+<h3 id="组装数据通路">组装数据通路</h3>
+<p>根据指令的RTL，选取需要的部件，建立正确的连接关系。<br>
+顶层建立mips.v文件</p>
+<p><strong>端口说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能简述</th>
+<th>位宽</th>
+<th>方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clk</td>
+<td>时钟信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>同步复位信号</td>
+<td>1</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span> mips(</span><br><span class="line">    <span class="built_in">input</span> clk,</span><br><span class="line">    <span class="built_in">input</span> reset</span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<p>在顶层电路中，按照不同的模块分别声明变量类型，最后把不同的模块之间用导线连接。</p>
+<h2 id="测试方案">测试方案</h2>
+<ul>
+<li>生成mars测试数据（尽可能覆盖全面），将指令导出为16进制格式，存在code.txt中；</li>
+<li>运行mips文件，查看$display数据是否和mars中预期一致</li>
+<li>与同学的代码结果进行对拍</li>
+<li>借助学长评测机进行测试</li>
+</ul>
+<h2 id="思考题">思考题</h2>
+<ul>
+<li>我们使用提前分支判断的方法尽早产生结果来减少因不确定而带来的开销，但实际上这种方法并非总能提高效率，请从流水线冒险的角度思考其原因并给出一个指令序列的例子。</li>
+</ul>
+<blockquote>
+<p>分支指令在D级就进行比较，需要的数据有很大可能还未产生，需要阻塞。而若阻塞次数过多会反而拖慢程序运行速率。<br>
+举例<code>lw $t0, 0($0) beq $t0,$0,jump</code>，则需要等待lw一周期才能获得$t0结果。</p>
+</blockquote>
+<ul>
+<li>因为延迟槽的存在，对于 jal 等需要将指令地址写入寄存器的指令，要写回 PC + 8，请思考为什么这样设计？</li>
+</ul>
+<blockquote>
+<p>延迟槽会紧跟分支指令执行，jal的功能是跳转并保存返回地址；由于此时PC+4为延迟槽指令，已经被执行过才进行跳转，所以下一次返回需要继续执行的指令是PC+8，若返回PC+4会重复执行延迟槽的指令。</p>
+</blockquote>
+<ul>
+<li>我们要求大家所有转发数据都来源于流水寄存器而不能是功能部件（如 DM 、 ALU ），请思考为什么？</li>
+</ul>
+<blockquote>
+<p>功能部件产生数据需要时间，若在功能部件后进行转发，可能会在一个周期的偏末位置才会产生需要转发的数据并进行转发，但是我们还需要转发后的数据继续运算，可能会拉长周期或者在短周期时出现问题。而流水线寄存器在时钟上升沿时就更新数据，在一个周期开始时可以马上进行正确的转发，在正确性和效率上都有保障。</p>
+</blockquote>
+<ul>
+<li>我们为什么要使用 GPR 内部转发？该如何实现？</li>
+</ul>
+<blockquote>
+<p>W级到D级间隔较远，需要转发来尽量避免阻塞。在读取寄存器编号和写入寄存器编号相同时，在GRF模块内部规定输出的数据为新写入的数据而非原始的寄存器值。<br>
+<code>assign out1 = ((grf_we &amp;&amp; (addr3!=5'd0)) &amp;&amp; (addr1==addr3)) ? data_in : grf[addr1];</code></p>
+</blockquote>
+<ul>
+<li>我们转发时数据的需求者和供给者可能来源于哪些位置？共有哪些转发数据通路？</li>
+</ul>
+<blockquote>
+<p>转发数据的需求者分别是CMP比较的两个输入端口，ALU计算的两个输入端口，和DM存数据的输入端口；供给者可能是ALU计算的输出端口，DM的输出端口，以及PC+8；转发数据通路设计文档上面已经详细说明。</p>
+</blockquote>
+<ul>
+<li>在课上测试时，我们需要你现场实现新的指令，对于这些新的指令，你可能需要在原有的数据通路上做哪些扩展或修改？提示：你可以对指令进行分类，思考每一类指令可能修改或扩展哪些位置。</li>
+</ul>
+<blockquote>
+<p>分为计算指令，跳转指令，访存指令。修改ALU和Controller，还有转发和阻塞条件等。</p>
+</blockquote>
+<ul>
+<li>确定你的译码方式，简要描述你的译码器架构，并思考该架构的优势以及不足。</li>
+</ul>
+<blockquote>
+<p>我的译码方式为集中式译码，采用一个Controller用寄存器在流水线级间传递；采用控制信号驱动型译码。集中式译码的优势在于只需要一个Controller模块，更改时只需要做出一次更改然后随流水线传信号即可，不足在于寄存器传递信号过多，操作量大，每次修改后面的寄存器和顶层电路的连线均需做出修改。控制信号驱动译码优点在于每次新添加指令时修改少，不足在于直观性不强，debug不太方便。</p>
+</blockquote>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/2025-OOpre-课程总结/" data-toggle="tooltip" data-placement="top" title="2025 OOpre 课程总结">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/P4设计文档/" data-toggle="tooltip" data-placement="top" title="P4 单周期CPU(verilog) 设计文档">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=P5 流水线CPU设计文档&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/P5设计文档/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: '',
+      id: 'Wed Nov 12 2025 17:12:39 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">设计思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%81%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">流程步骤</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9C%80%E6%B1%82%E6%A6%82%E6%8B%AC"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">需求概括</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E9%9B%86%E6%9C%BA%E5%99%A8%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">指令集机器码规范</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#R%E5%9E%8B"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">R型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#I%E5%9E%8B"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">I型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#J%E5%9E%8B"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">J型</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9E%84%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E9%83%A8%E4%BB%B6"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">构建数据通路部件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%A1%B6%E5%B1%82%E6%9E%B6%E6%9E%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">顶层架构命名规范</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BA%A7%E9%97%B4%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">级间寄存器</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#F%E7%BA%A7"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">F级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#PC"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">PC</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#NPC"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">NPC</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#IM"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">IM</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#D%E7%BA%A7"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">D级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Splitter"><span class="toc-nav-number">1.4.4.1.</span> <span class="toc-nav-text">Splitter</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#GRF-Read"><span class="toc-nav-number">1.4.4.2.</span> <span class="toc-nav-text">GRF(Read)</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#EXT"><span class="toc-nav-number">1.4.4.3.</span> <span class="toc-nav-text">EXT</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#CMP-%E6%96%B0%E5%A2%9E"><span class="toc-nav-number">1.4.4.4.</span> <span class="toc-nav-text">CMP(新增)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#E%E7%BA%A7"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">E级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ALU"><span class="toc-nav-number">1.4.5.1.</span> <span class="toc-nav-text">ALU</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#M%E7%BA%A7"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">M级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#DM"><span class="toc-nav-number">1.4.6.1.</span> <span class="toc-nav-text">DM</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#W%E7%BA%A7"><span class="toc-nav-number">1.4.7.</span> <span class="toc-nav-text">W级</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#GRF-Write"><span class="toc-nav-number">1.4.7.1.</span> <span class="toc-nav-text">GRF(Write)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%AF%91%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">1.4.8.</span> <span class="toc-nav-text">译码方式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%98%BB%E5%A1%9E%E4%B8%8E%E8%BD%AC%E5%8F%91%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.4.9.</span> <span class="toc-nav-text">阻塞与转发模块</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%BD%AC%E5%8F%91%E9%83%A8%E5%88%86"><span class="toc-nav-number">1.4.9.1.</span> <span class="toc-nav-text">转发部分</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%98%BB%E5%A1%9E%E9%83%A8%E5%88%86"><span class="toc-nav-number">1.4.9.2.</span> <span class="toc-nav-text">阻塞部分</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E8%A3%85%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">组装数据通路</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">测试方案</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">思考题</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#CO" title="CO">CO</a>
+            
+            <a class="tag" href="/tags/#verilog" title="verilog">verilog</a>
+            
+            <a class="tag" href="/tags/#P5" title="P5">P5</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/Nuyoah-10">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Nuyoah
+          2026
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+    <!-- LangSelect start -->
+    <script type="text/javascript" src="/js/langselect.js"></script>
+    <!-- LangSelect end -->
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='Happiness,Laugh,Future,Friend,Life' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+    <!-- Line start -->
+    <script async="text/javascript" src="/js/line.js"></script>
+    <!-- Line end -->
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("https://nuyoah-10.github.io/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
