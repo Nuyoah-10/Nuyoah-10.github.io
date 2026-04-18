@@ -153,10 +153,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://nuyoah-10.github.io/cn/">
+  <link rel="canonical" href="https://nuyoah-10.github.io/cn/OS-Lab0-实验报告/">
   <title>
     
-      stay hungry stay foolish
+      OS Lab0 实验报告 - stay hungry stay foolish
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -314,29 +314,7 @@
           <!-- LangSelect -->
           
           
-          <!-- LangSelect start -->
-          <!-- LangSelect -->
-<li>
-  <a id="lang-select-label"><i class="fa fa-globe"></i>
-    <span>
-      简体中文
-    </span>
-    <select id="lang-select" data-canonical="cn/index.html">
-      
-      
-      <option value="cn"  selected >
-        简体中文
-      </option>
-      
-      <option value="en" >
-        English
-      </option>
-      
-    </select>
-  </a>
-</li>
-
-          <!-- LangSelect end -->
+          
           
           
         </ul>
@@ -388,19 +366,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/tag_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/tag_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*config*/
-        background-image: var(--intro-header-background-image-url-home);
-        /* background-image: url('/img/header_img/tag_bg.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -422,10 +400,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>Nuyaoh&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">HAPPY   EVERYDAY</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#OS" title="OS">OS</a>
+              
+            </div>
+            <h1>OS Lab0 实验报告</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Nuyoah on
+              2025-03-19
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">4</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.3k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -466,788 +476,346 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="thinking-0-1"><a href="#thinking-0-1" class="headerlink" title="thinking 0.1"></a>thinking 0.1</h3><blockquote>
+<ul>
+<li><code>Untracked.txt</code>文件属于未跟踪状态，显示为<code>Untracked files</code></li>
+<li><code>Stage.txt</code>文件属于已暂存状态，显示为<code>Changes to be committed</code></li>
+<li><code>Modified.txt</code>文件属于已暂存状态，显示为<code>Changes not staged for commit</code>，已被跟踪但是修改后未add，暂存区为旧版本</li>
+</ul>
+</blockquote>
+<h3 id="thinking-0-2"><a href="#thinking-0-2" class="headerlink" title="thinking 0.2"></a>thinking 0.2</h3><ul>
+<li>思考箭头中的add the file、stage the file和commit分别对应Git中哪些命令</li>
+</ul>
+<blockquote>
+<p>回答：</p>
+<ol>
+<li><p><code>add the file</code> 是将文件从<code>Untracked</code>状态转移至<code>Staged</code>状态，对应 <code>git add &lt;file&gt;</code>命令</p>
+</li>
+<li><p><code>stage the file</code>是将文件从<code>modified</code>状态变为<code>staged</code>状态，需要使用的命令同样是<code>git add &lt;file&gt;</code>，<code>git add</code>的功能是把新文件或者已经修改过的文件加入暂存区</p>
+</li>
+<li><p><code>commit</code>的操作是将文件状态从<code>Staged</code>转换为<code>Unmodified</code>，对应的命令是<code>git commit</code><br><img src="image.png" alt="alt text"><br><img src="image-1.png" alt="alt text"></p>
+</li>
+</ol>
+</blockquote>
+<h3 id="thinking-0-3"><a href="#thinking-0-3" class="headerlink" title="thinking 0.3"></a>thinking 0.3</h3><ul>
+<li>1.代码文件<code>print.c</code>被错误删时，应当使用什么命令将其恢复</li>
+</ul>
+<blockquote>
+<p>使用<code>git checkout -- print.c</code>，<code>git checkout -- &lt;file&gt;</code>会将暂存区的文件恢复至工作区，覆盖当前工作区的删除状态。</p>
+</blockquote>
+<ul>
+<li>代码文件<code>print.c</code>被错误删除后，执行了<code>git rm print.c</code>命令，此时应当使用什么命令将其恢复</li>
+</ul>
+<blockquote>
+<p><code>git rm print.c</code>执行后，同时删除了工作区的文件，且将删除操作添加到了暂存区。将其恢复应该先使用<code>git reset HEAD print.c</code>撤销暂存区的删除操作，再<code>git checkout -- print.c</code>将文件从暂存区恢复到工作区。</p>
+</blockquote>
+<ul>
+<li>无关命令<code>hello.txt</code>已经被添加到暂存区，如何在不删除此文件的前提下将其移出暂存区</li>
+</ul>
+<blockquote>
+<p>使用<code>git rm --cached hello.txt</code>，这条命令可以从暂存区中删除不再跟踪的文件，不会影响工作区实际文件。</p>
+</blockquote>
+<h3 id="thinking-0-4"><a href="#thinking-0-4" class="headerlink" title="thinking 0.4"></a>thinking 0.4</h3><blockquote>
+<p>执行<code>git reset --hard HEAD^</code>后日志中仅有版本1和版本2<br>执行命令<code>gitreset--hard&lt;版本1哈希值&gt;</code>后日志中仅有版本1<br>再<code>gitreset--hard&lt;版本3哈希值&gt;</code>后日志中包含完整的三个版本。</p>
+</blockquote>
+<h3 id="thinking-0-5"><a href="#thinking-0-5" class="headerlink" title="thinking 0.5"></a>thinking 0.5</h3><ul>
+<li>执行如下内容，并查看结果</li>
+<li><code>echo first</code></li>
+</ul>
+<blockquote>
+<p>在屏幕上输出<code>first</code></p>
+</blockquote>
+<ul>
+<li><code>echo second &gt; output.txt</code></li>
+</ul>
+<blockquote>
+<p>屏幕无输出，在<code>output.txt</code>中出现<code>second</code></p>
+</blockquote>
+<ul>
+<li><code>echo third &gt; output.txt</code></li>
+</ul>
+<blockquote>
+<p>屏幕无输出，在<code>output.txt</code>中出现<code>third</code></p>
+</blockquote>
+<ul>
+<li><code>echo forth &gt;&gt; output.txt</code></li>
+</ul>
+<blockquote>
+<p>屏幕无输出，在<code>output.txt</code>中出现third和forth，分别占据一行。</p>
+</blockquote>
+<h3 id="thinking-0-6"><a href="#thinking-0-6" class="headerlink" title="thinking 0.6"></a>thinking 0.6</h3><blockquote>
+<p><code>command</code>文件中内容如下<br><img src="image-2.png" alt="alt text"><br><code>result</code>文件中内容如下<br><img src="image-3.png" alt="alt text"></p>
+<ul>
+<li>解释说明：首先运行<code>command</code>文件，使得<code>test</code>文件内容如题图，<code>file1</code>文件中存3，输出到file4文件中，<code>file2</code>文件中存2，追加到<code>file4</code>文件中，<code>file3</code>文件中存1，继续追加到<code>file4</code>中，再输出至<code>result</code>文件中，则<code>result</code>分行输出3，2,1.</li>
+<li><code>echo echo Shell Start</code>与<code>echo `echo Shell Start` </code>不同：前者会直接输出字符串<code>echo Shell Start</code>而后者会先执行``内的命令，最终输出 Shell Start</li>
+<li><code>echo echo $c&gt;file1</code>与<code>echo `echo $c&gt;file1` </code>不同：前者将<code>echo 3</code>写入<code>file1</code>；后者把3写入<code>file1</code>，外层echo输出为空</li>
+</ul>
+</blockquote>
+<h2 id="难点分析"><a href="#难点分析" class="headerlink" title="难点分析"></a>难点分析</h2><ul>
+<li>命令行的操作很多比较灵活，目前只会使用最基础的用法。一旦涉及到多命令通过重定向或管道复合在一起，就会容易思路不清。比如extra的最后一小问，需要通过awk,sort,uniq的复合使用来完成问题。由于对管道和上述三个命令的不熟悉尝试了多次。后续需要加深对每个命令的理解。</li>
+<li>在Shell脚本的学习中经常需要使用””和’’和$等符号，对这些符号内容还需要加强理解。实验时遇到需要输出s行（参数1）到最后一行，当时写出</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n <span class="string">&quot;<span class="variable">$1</span>,<span class="variable">$p</span>&quot;</span> my.txt`</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>后续发现需要加转移符号或者在$与p之间加空格，否则会一起解析导致出现错误</p>
+</li>
+<li><p>对于git的掌握<br>git是非常有用的版本控制工具，但是由于之前使用次数不多所以掌握程度不高。尤其对版本回退命令不熟练</p>
+<ol>
+<li><code>git reset --soft 版本号</code><br>可回退到指定版本，代码保留，修改仍在暂存区</li>
+<li><code>git reset 版本号</code>，（等价于—mixed）回退版本，代码保留，修改回到工作区</li>
+<li><code>git reset --hard</code>，回退版本，代码直接丢弃，彻底回到过去，需要谨慎使用。</li>
+<li><code>git checkout 版本号 --文件名</code>。只回退单个文件，不影响整个版本</li>
+</ol>
+</li>
+</ul>
+<h2 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h2><ul>
+<li>首次正式接触命令行相关内容，命令使用不熟练，后续需要多加练习以熟悉</li>
+<li>对vim和GDB使用方式不适应，尤其是GDB的调试问题。由于先前大一写代码时基本都使用print调试，对断点调试了解不深，通过GDB断点调试更是不熟练</li>
+<li>但是通过一定pre练习后顺利通过了OS的exam和extra内容，增添了一点信心（？）后续会多多练习OS以加深对操作系统的理解。</li>
+</ul>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/Test-Blog/" data-toggle="tooltip" data-placement="top" title="Test Blog">&larr; Previous Post</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
     
-
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-
-      <!-- Main Content -->
-
-
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/2026-OO-U1总结/">
-    <h2 class="post-title">
-      2026-OO-U1总结
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      迭代作业最终架构设计
-U1最终作业整体架构如下图所示：
-
-整体分为四个层次
-
-
-
-输入预处理层，白色框内容，包括
-
-
-Main : 单纯输入输出，不做任何多余操作
-Processor : 预处理，处理空白字符，连续正负号问题
-Calculator : 集中处理自定义函数和递归函数，只负责处理两类 f 函数
-
-
-
-
-文法词法处理层，灰色框内容：
-
-
-Token : 记录最小语法单位
-Lexer......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2026-03-30
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
   </p>
-  <div class="tags">
-    
-    <a href="/tags/#OO" title="OO">OO</a>
-    
-    <a href="/tags/#U1" title="U1">U1</a>
-    
-  </div>
-  
-
 </div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P7上机感想/">
-    <h2 class="post-title">
-      P7上机感想
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      
-通过阅读此篇文章，您可以大致了解2025年CO P7上机题目，但是回忆版本不甚清晰，希望对大家略有帮助~
-
-终！于！结！束！了！
-话不多说先来回忆。
-P7上机是4道强测 + 1道新增指令
-功能强测 + 异常强测 + 中断强测 + 冲突强测
-回忆版题面
-回忆仅供参考，细节可能记忆错误。
-指令：monitor
-指令形式：
-monitor rt,rd
-指令大意
-对 sw 进行一些限制操作，使得监......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-12-08
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#课上" title="课上">课上</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P7" title="P7">P7</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P7-设计文档/">
-    <h2 class="post-title">
-      P7 设计文档
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      设计思路
-流程步骤
-
-完成CP0协处理器
-在流水线中识别各种异常情况，并随流水线传输至CP0中
-添加timer0,timer1（教程已给出）
-添加bridge,完成CPU和tb等的信号传输
-将mips设为顶层线路，实例化CPU,timer0,timer1,bridge
-
-需求概括
-
-32位支持中断异常的五级流水线处理器
-支持指令集为：add, sub, and, or, slt, sltu,......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-12-02
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P7" title="P7">P7</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P6上机感想/">
-    <h2 class="post-title">
-      P6 上机感想
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      
-通过阅读此篇文章，您可以大致了解2025年CO P6上机题目，但是回忆版本不甚清晰，希望对大家略有帮助~
-
-久违的AK ！！！！感谢助教大人高抬贵手捏~
-感觉这次题目普遍简单，没有涉及到乘除槽，和P5没什么区别捏
-依旧是 计算 + 跳转 + 访存
-回忆版题面
-回忆仅供参考，细节可能记忆错误。这次懒得写RTL了…
-T1 指令：MUJITO
-指令大意
-计算立即数中1的个数，若为奇数，则将GPR......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-12-01
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#课上" title="课上">课上</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P6" title="P6">P6</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P5-课上感想/">
-    <h2 class="post-title">
-      P5 上机感想
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      
-通过阅读此篇文章，您可以大致了解2025年CO P5上机题目(和本人菜鸡视角下的上机碎碎念吐槽)，希望对大家略有帮助~
-
-可恶可恶可恶可恶！
-课下写了五个推荐题，上机一看这不是完全一样的吗
-然鹅还是只过了两个哈哈…真伤心了…
-P5出的题目很有规律，基本每次都是 计算 + 跳转 + 访存
-
-计算
-没什么好说的就是各种修改ALU；
-跳转
-有时会不执行延时槽中的指令，即清空延时槽，只需要注意在非......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-24
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#课上" title="课上">课上</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P5" title="P5">P5</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P6设计文档/">
-    <h2 class="post-title">
-      P6 流水线CPU设计文档
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      设计思路
-流程步骤
-
-将存储器进行外置
-分析新添加指令集特征，同类指令一起添加
-进行controller,alu等模块修改
-分析新加指令的转发和暂停逻辑
-检验完成支持28条指令的流水线CPU
-
-需求概括
-
-32位五级流水线处理器
-支持指令集为：add, sub, and, or, slt, sltu, lui, addi, andi, ori, lb, lh, lw, sb, sh, sw,......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-20
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P6" title="P6">P6</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P4上机感想/">
-    <h2 class="post-title">
-      P4 上机感想
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      
-通过阅读此篇文章，您可以大致了解2025年CO P4上机题目，希望对大家略有帮助~
-
-P4第一次课下挂掉了。。。且反思了两天也没反思出来确凿的错在哪里，所以直接记录第二次上机的题目了QAQ
-很模糊的回忆版题面
-回忆仅供参考，有细节比如寄存器的序号可能记不清。
-T1 指令：CRR
-指令大意
-将rs和rt寄存器中的数分别右移，比较大小，存入rd寄存器中。
-RTL
-形式：crr rd,rs,rt......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-17
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#课上" title="课上">课上</a>
-    
-    <a href="/tags/#P4" title="P4">P4</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/2025-OOpre-课程总结/">
-    <h2 class="post-title">
-      2025 OOpre 课程总结
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      迭代作业最终架构设计
-七次作业整体架构如下图所示：
-
-整体架构梳理
-代码整体大致可分为三块：输入输出处理、核心实体、集中逻辑处理。
-输入输出处理部分
-
-MainClass ：进入程序，然后进入Work处理
-Lexer/Parser/AdventurerNode:词法分析和语法分析，解析雇佣关系字符串，生成关系树来构建上下级关系。
-
-核心实体部分
-
-
-Adventurer:冒险者处理，包含属性......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-13
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#OOpre" title="OOpre">OOpre</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P5设计文档/">
-    <h2 class="post-title">
-      P5 流水线CPU设计文档
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      设计思路
-流程步骤
-
-分析流水线CPU的层次架构，设计模块和接口
-理解好转发和暂停的条件
-设计译码方式和译码风格
-创建好单一模块后，连接好转发与阻塞部分
-
-需求概括
-
-32位五级流水线处理器
-支持指令集为：add, sub, ori, lw, sw, beq, lui, jal, jr, nop（与单周期相同）
-
-指令集机器码规范
-nop机器码全零，不做特殊考虑
-R型
-
-
-add
-
-
-
-su......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-12
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-    <a href="/tags/#P5" title="P5">P5</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P4设计文档/">
-    <h2 class="post-title">
-      P4 单周期CPU(verilog) 设计文档
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      设计思路
-流程步骤
-
-分析P3中logisim各个部件及数据通路
-在verilog中分别对每个部件建立module
-根据数据通路，在顶层电路中连接各部件接口
-
-需求概括
-
-32位单周期处理器
-支持指令集为：add, sub, ori, lw, sw, beq, lui, jal, jr, nop
-
-指令集机器码规范
-nop机器码全零，不做特殊考虑
-R型
-
-
-add
-
-
-
-sub
-
-
-
-
-jr......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-08
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#P4" title="P4">P4</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-
-  <!-- Pager -->
-  <ul class="pager">
-    
-    
-    <li class="next">
-      <a href="/cn/archives/2/">下一页 &rarr;</a>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
     </li>
-    
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=OS Lab0 实验报告&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/OS-Lab0-实验报告/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: '',
+      id: 'Wed Mar 19 2025 16:28:55 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">思考题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-1"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">thinking 0.1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-2"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">thinking 0.2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">thinking 0.3</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">thinking 0.4</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-5"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">thinking 0.5</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-0-6"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">thinking 0.6</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9A%BE%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">难点分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">实验体会</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#OS" title="OS">OS</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#OOpre" title="OOpre" rel="1">OOpre</a>
-    
-    
-    
-    <a href="/tags/#CO" title="CO" rel="10">CO</a>
-    
-    
-    
-    <a href="/tags/#P3" title="P3" rel="2">P3</a>
-    
-    
-    
-    <a href="/tags/#logisim" title="logisim" rel="2">logisim</a>
-    
-    
-    
-    <a href="/tags/#课上" title="课上" rel="5">课上</a>
-    
-    
-    
-    <a href="/tags/#OO" title="OO" rel="1">OO</a>
-    
-    
-    
-    <a href="/tags/#U1" title="U1" rel="1">U1</a>
-    
-    
-    
-    <a href="/tags/#P4" title="P4" rel="2">P4</a>
-    
-    
-    
-    <a href="/tags/#verilog" title="verilog" rel="8">verilog</a>
-    
-    
-    
-    <a href="/tags/#P5" title="P5" rel="2">P5</a>
-    
-    
-    
-    <a href="/tags/#P6" title="P6" rel="2">P6</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
-    
-    
-    
-    <a href="/tags/#P7" title="P7" rel="2">P7</a>
-    
-    
-    
-    <a href="/tags/#OS" title="OS" rel="1">OS</a>
-    
-    
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</section>
+</article>
 
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
 
-    
-    <img id="avatar_pic" src="/img/avatar/Nuyoah.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
 
-    
-    <p>祝每个人开心每一天！</p>
-    
+<!-- anchorjs end -->
 
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Nuyoah-10">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="2026-OO-U1%E6%80%BB%E7%BB%93/">
-      <li>2026-OO-U1总结</li>
-    </a>
-    
-    <a href="P7%E4%B8%8A%E6%9C%BA%E6%84%9F%E6%83%B3/">
-      <li>P7上机感想</li>
-    </a>
-    
-    <a href="P7-%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/">
-      <li>P7 设计文档</li>
-    </a>
-    
-    <a href="P6%E4%B8%8A%E6%9C%BA%E6%84%9F%E6%83%B3/">
-      <li>P6 上机感想</li>
-    </a>
-    
-    <a href="P5-%E8%AF%BE%E4%B8%8A%E6%84%9F%E6%83%B3/">
-      <li>P5 上机感想</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2026/03/">March 2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/12/">December 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/11/">November 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/10/">October 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/03/">March 2025</a><span class="archive-list-count">1</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#OOpre">
-      <li>OOpre</li>
-    </a>
-    
-    <a href="/categories/#CO">
-      <li>CO</li>
-    </a>
-    
-    <a href="/categories/#OO">
-      <li>OO</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
-    <a href="/categories/#OS">
-      <li>OS</li>
-    </a>
-    
-    <a href="/categories/#实验报告">
-      <li>实验报告</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
-  </div>
-</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
