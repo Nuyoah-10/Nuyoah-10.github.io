@@ -258,6 +258,17 @@
 
           
           
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
           
           
           <li>
@@ -275,17 +286,6 @@
             <a href="/archive/">
               
               归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/categories/">
-              
-              分类
               
               
             </a>
@@ -492,6 +492,69 @@
   <!-- top end -->
   
 
+  <a href="/cn/P4设计文档/">
+    <h2 class="post-title">
+      P4 单周期CPU(verilog) 设计文档
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      设计思路
+流程步骤
+
+分析P3中logisim各个部件及数据通路
+在verilog中分别对每个部件建立module
+根据数据通路，在顶层电路中连接各部件接口
+
+需求概括
+
+32位单周期处理器
+支持指令集为：add, sub, ori, lw, sw, beq, lui, jal, jr, nop
+
+指令集机器码规范
+nop机器码全零，不做特殊考虑
+R型
+
+
+add
+
+
+
+sub
+
+
+
+
+jr......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Nuyoah on
+    2025-11-08
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#CO" title="CO">CO</a>
+    
+    <a href="/tags/#verilog" title="verilog">verilog</a>
+    
+    <a href="/tags/#P4" title="P4">P4</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/P3上机感想/">
     <h2 class="post-title">
       P3上机感想
@@ -646,47 +709,6 @@ T1 指令：revi
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/OS-Lab0-实验报告/">
-    <h2 class="post-title">
-      OS Lab0 实验报告
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      思考题thinking 0.1
-
-Untracked.txt文件属于未跟踪状态，显示为Untracked files
-Stage.txt文件属于已暂存状态，显示为Changes to be committed
-Modified.txt文件属于已暂存状态，显示为Changes not staged for commit，已被跟踪但是修改后未add，暂存区为旧版本
-
-
-thinking 0.2
-......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-03-19
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#OS" title="OS">OS</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -763,11 +785,7 @@ thinking 0.2
     
     
     
-    <a href="/tags/#P4" title="P4" rel="2">P4</a>
-    
-    
-    
-    <a href="/tags/#verilog" title="verilog" rel="8">verilog</a>
+    <a href="/tags/#OS" title="OS" rel="1">OS</a>
     
     
     
@@ -775,11 +793,15 @@ thinking 0.2
     
     
     
+    <a href="/tags/#verilog" title="verilog" rel="8">verilog</a>
+    
+    
+    
+    <a href="/tags/#P4" title="P4" rel="2">P4</a>
+    
+    
+    
     <a href="/tags/#P6" title="P6" rel="2">P6</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
     
     
     
@@ -787,7 +809,7 @@ thinking 0.2
     
     
     
-    <a href="/tags/#OS" title="OS" rel="1">OS</a>
+    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
     
     
   </div>
@@ -854,6 +876,10 @@ thinking 0.2
       <li>2026-OO-U1总结</li>
     </a>
     
+    <a href="../../cn/OS-Lab0-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">
+      <li>OS Lab0 实验报告</li>
+    </a>
+    
     <a href="../../cn/P7%E4%B8%8A%E6%9C%BA%E6%84%9F%E6%83%B3/">
       <li>P7上机感想</li>
     </a>
@@ -866,10 +892,6 @@ thinking 0.2
       <li>P6 上机感想</li>
     </a>
     
-    <a href="../../cn/P5-%E8%AF%BE%E4%B8%8A%E6%84%9F%E6%83%B3/">
-      <li>P5 上机感想</li>
-    </a>
-    
   </ul>
 </div>
 
@@ -880,7 +902,7 @@ thinking 0.2
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2026/03/">March 2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/12/">December 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/11/">November 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/10/">October 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/03/">March 2025</a><span class="archive-list-count">1</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2026/03/">March 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/12/">December 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/11/">November 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2025/10/">October 2025</a><span class="archive-list-count">1</span></li></ul>
 </div>
 
 
@@ -904,16 +926,16 @@ thinking 0.2
       <li>OO</li>
     </a>
     
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
     <a href="/categories/#OS">
       <li>OS</li>
     </a>
     
     <a href="/categories/#实验报告">
       <li>实验报告</li>
+    </a>
+    
+    <a href="/categories/#Hexo-Theme-LiveMyLife">
+      <li>Hexo-Theme-LiveMyLife</li>
     </a>
     
   </ul>

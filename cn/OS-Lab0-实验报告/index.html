@@ -258,6 +258,17 @@
 
           
           
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
           
           
           <li>
@@ -275,17 +286,6 @@
             <a href="/archive/">
               
               归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/categories/">
-              
-              分类
               
               
             </a>
@@ -410,7 +410,7 @@
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by Nuyoah on
-              2025-03-19
+              2026-03-19
             </span>
 
 
@@ -484,28 +484,41 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><h3 id="thinking-0-1"><a href="#thinking-0-1" class="headerlink" title="thinking 0.1"></a>thinking 0.1</h3><blockquote>
+        <h2 id="思考题">思考题</h2>
+<h3 id="thinking-0-1">thinking 0.1</h3>
+<blockquote>
 <ul>
 <li><code>Untracked.txt</code>文件属于未跟踪状态，显示为<code>Untracked files</code></li>
 <li><code>Stage.txt</code>文件属于已暂存状态，显示为<code>Changes to be committed</code></li>
 <li><code>Modified.txt</code>文件属于已暂存状态，显示为<code>Changes not staged for commit</code>，已被跟踪但是修改后未add，暂存区为旧版本</li>
 </ul>
 </blockquote>
-<h3 id="thinking-0-2"><a href="#thinking-0-2" class="headerlink" title="thinking 0.2"></a>thinking 0.2</h3><ul>
+<h3 id="thinking-0-2">thinking 0.2</h3>
+<ul>
 <li>思考箭头中的add the file、stage the file和commit分别对应Git中哪些命令</li>
 </ul>
 <blockquote>
 <p>回答：</p>
+</blockquote>
+<blockquote>
 <ol>
-<li><p><code>add the file</code> 是将文件从<code>Untracked</code>状态转移至<code>Staged</code>状态，对应 <code>git add &lt;file&gt;</code>命令</p>
-</li>
-<li><p><code>stage the file</code>是将文件从<code>modified</code>状态变为<code>staged</code>状态，需要使用的命令同样是<code>git add &lt;file&gt;</code>，<code>git add</code>的功能是把新文件或者已经修改过的文件加入暂存区</p>
-</li>
-<li><p><code>commit</code>的操作是将文件状态从<code>Staged</code>转换为<code>Unmodified</code>，对应的命令是<code>git commit</code><br><img src="image.png" alt="alt text"><br><img src="image-1.png" alt="alt text"></p>
-</li>
+<li><code>add the file</code> 是将文件从<code>Untracked</code>状态转移至<code>Staged</code>状态，对应 <code>git add &lt;file&gt;</code>命令</li>
 </ol>
 </blockquote>
-<h3 id="thinking-0-3"><a href="#thinking-0-3" class="headerlink" title="thinking 0.3"></a>thinking 0.3</h3><ul>
+<blockquote>
+<ol start="2">
+<li><code>stage the file</code>是将文件从<code>modified</code>状态变为<code>staged</code>状态，需要使用的命令同样是<code>git add &lt;file&gt;</code>，<code>git add</code>的功能是把新文件或者已经修改过的文件加入暂存区</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li><code>commit</code>的操作是将文件状态从<code>Staged</code>转换为<code>Unmodified</code>，对应的命令是<code>git commit</code><br>
+<img src="image.png" alt="alt text"><br>
+<img src="image-1.png" alt="alt text"></li>
+</ol>
+</blockquote>
+<h3 id="thinking-0-3">thinking 0.3</h3>
+<ul>
 <li>1.代码文件<code>print.c</code>被错误删时，应当使用什么命令将其恢复</li>
 </ul>
 <blockquote>
@@ -523,10 +536,14 @@
 <blockquote>
 <p>使用<code>git rm --cached hello.txt</code>，这条命令可以从暂存区中删除不再跟踪的文件，不会影响工作区实际文件。</p>
 </blockquote>
-<h3 id="thinking-0-4"><a href="#thinking-0-4" class="headerlink" title="thinking 0.4"></a>thinking 0.4</h3><blockquote>
-<p>执行<code>git reset --hard HEAD^</code>后日志中仅有版本1和版本2<br>执行命令<code>gitreset--hard&lt;版本1哈希值&gt;</code>后日志中仅有版本1<br>再<code>gitreset--hard&lt;版本3哈希值&gt;</code>后日志中包含完整的三个版本。</p>
+<h3 id="thinking-0-4">thinking 0.4</h3>
+<blockquote>
+<p>执行<code>git reset --hard HEAD^</code>后日志中仅有版本1和版本2<br>
+执行命令<code>gitreset--hard&lt;版本1哈希值&gt;</code>后日志中仅有版本1<br>
+再<code>gitreset--hard&lt;版本3哈希值&gt;</code>后日志中包含完整的三个版本。</p>
 </blockquote>
-<h3 id="thinking-0-5"><a href="#thinking-0-5" class="headerlink" title="thinking 0.5"></a>thinking 0.5</h3><ul>
+<h3 id="thinking-0-5">thinking 0.5</h3>
+<ul>
 <li>执行如下内容，并查看结果</li>
 <li><code>echo first</code></li>
 </ul>
@@ -551,32 +568,42 @@
 <blockquote>
 <p>屏幕无输出，在<code>output.txt</code>中出现third和forth，分别占据一行。</p>
 </blockquote>
-<h3 id="thinking-0-6"><a href="#thinking-0-6" class="headerlink" title="thinking 0.6"></a>thinking 0.6</h3><blockquote>
-<p><code>command</code>文件中内容如下<br><img src="image-2.png" alt="alt text"><br><code>result</code>文件中内容如下<br><img src="image-3.png" alt="alt text"></p>
+<h3 id="thinking-0-6">thinking 0.6</h3>
+<blockquote>
+<p><code>command</code>文件中内容如下<br>
+<img src="image-2.png" alt="alt text"><br>
+<code>result</code>文件中内容如下<br>
+<img src="image-3.png" alt="alt text"></p>
 <ul>
 <li>解释说明：首先运行<code>command</code>文件，使得<code>test</code>文件内容如题图，<code>file1</code>文件中存3，输出到file4文件中，<code>file2</code>文件中存2，追加到<code>file4</code>文件中，<code>file3</code>文件中存1，继续追加到<code>file4</code>中，再输出至<code>result</code>文件中，则<code>result</code>分行输出3，2,1.</li>
 <li><code>echo echo Shell Start</code>与<code>echo `echo Shell Start` </code>不同：前者会直接输出字符串<code>echo Shell Start</code>而后者会先执行``内的命令，最终输出 Shell Start</li>
 <li><code>echo echo $c&gt;file1</code>与<code>echo `echo $c&gt;file1` </code>不同：前者将<code>echo 3</code>写入<code>file1</code>；后者把3写入<code>file1</code>，外层echo输出为空</li>
 </ul>
 </blockquote>
-<h2 id="难点分析"><a href="#难点分析" class="headerlink" title="难点分析"></a>难点分析</h2><ul>
+<h2 id="难点分析">难点分析</h2>
+<ul>
 <li>命令行的操作很多比较灵活，目前只会使用最基础的用法。一旦涉及到多命令通过重定向或管道复合在一起，就会容易思路不清。比如extra的最后一小问，需要通过awk,sort,uniq的复合使用来完成问题。由于对管道和上述三个命令的不熟悉尝试了多次。后续需要加深对每个命令的理解。</li>
-<li>在Shell脚本的学习中经常需要使用””和’’和$等符号，对这些符号内容还需要加强理解。实验时遇到需要输出s行（参数1）到最后一行，当时写出</li>
+<li>在Shell脚本的学习中经常需要使用&quot;&quot;和’'和$等符号，对这些符号内容还需要加强理解。实验时遇到需要输出s行（参数1）到最后一行，当时写出</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n <span class="string">&quot;<span class="variable">$1</span>,<span class="variable">$p</span>&quot;</span> my.txt`</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>后续发现需要加转移符号或者在$与p之间加空格，否则会一起解析导致出现错误</p>
+<li>
+<p>后续发现需要加转移符号或者在$与p之间加空格，否则会一起解析导致出现错误</p>
 </li>
-<li><p>对于git的掌握<br>git是非常有用的版本控制工具，但是由于之前使用次数不多所以掌握程度不高。尤其对版本回退命令不熟练</p>
+<li>
+<p>对于git的掌握<br>
+git是非常有用的版本控制工具，但是由于之前使用次数不多所以掌握程度不高。尤其对版本回退命令不熟练</p>
 <ol>
-<li><code>git reset --soft 版本号</code><br>可回退到指定版本，代码保留，修改仍在暂存区</li>
-<li><code>git reset 版本号</code>，（等价于—mixed）回退版本，代码保留，修改回到工作区</li>
+<li><code>git reset --soft 版本号</code><br>
+可回退到指定版本，代码保留，修改仍在暂存区</li>
+<li><code>git reset 版本号</code>，（等价于–mixed）回退版本，代码保留，修改回到工作区</li>
 <li><code>git reset --hard</code>，回退版本，代码直接丢弃，彻底回到过去，需要谨慎使用。</li>
 <li><code>git checkout 版本号 --文件名</code>。只回退单个文件，不影响整个版本</li>
 </ol>
 </li>
 </ul>
-<h2 id="实验体会"><a href="#实验体会" class="headerlink" title="实验体会"></a>实验体会</h2><ul>
+<h2 id="实验体会">实验体会</h2>
+<ul>
 <li>首次正式接触命令行相关内容，命令使用不熟练，后续需要多加练习以熟悉</li>
 <li>对vim和GDB使用方式不适应，尤其是GDB的调试问题。由于先前大一写代码时基本都使用print调试，对断点调试了解不深，通过GDB断点调试更是不熟练</li>
 <li>但是通过一定pre练习后顺利通过了OS的exam和extra内容，增添了一点信心（？）后续会多多练习OS以加深对操作系统的理解。</li>
@@ -588,9 +615,13 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/Test-Blog/" data-toggle="tooltip" data-placement="top" title="Test Blog">&larr; Previous Post</a>
+            <a href="/cn/2026-OO-U1总结/" data-toggle="tooltip" data-placement="top" title="2026-OO-U1总结">&larr; Previous Post</a>
           </li>
           
+          
+          <li class="next">
+            <a href="/cn/P7上机感想/" data-toggle="tooltip" data-placement="top" title="P7上机感想">Next Post &rarr;</a>
+          </li>
           
         </ul>
 
@@ -673,7 +704,7 @@
       repo: '',
       owner: '',
       admin: '',
-      id: 'Wed Mar 19 2025 16:28:55 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Thu Mar 19 2026 16:28:55 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
