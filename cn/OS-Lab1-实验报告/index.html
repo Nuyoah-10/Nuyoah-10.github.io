@@ -153,10 +153,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://nuyoah-10.github.io/cn/P4上机感想/">
+  <link rel="canonical" href="https://nuyoah-10.github.io/cn/OS-Lab1-实验报告/">
   <title>
     
-      P4 上机感想 - stay hungry stay foolish
+      OS Lab1 实验报告 - stay hungry stay foolish
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -403,20 +403,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#CO" title="CO">CO</a>
-              
-              <a class="tag" href="/tags/#课上" title="课上">课上</a>
-              
-              <a class="tag" href="/tags/#P4" title="P4">P4</a>
-              
-              <a class="tag" href="/tags/#verilog" title="verilog">verilog</a>
+              <a class="tag" href="/tags/#OS" title="OS">OS</a>
               
             </div>
-            <h1>P4 上机感想</h1>
+            <h1>OS Lab1 实验报告</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by Nuyoah on
-              2025-11-17
+              2026-04-01
             </span>
 
 
@@ -424,11 +418,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">3</span> Minutes
+              Estimated Reading Time <span class="post-count">9</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">997</span> In Total
+              Words <span class="post-count">2.1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -490,54 +484,127 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <blockquote>
-<p>通过阅读此篇文章，您可以大致了解2025年CO P4上机题目，希望对大家略有帮助~</p>
+        <h2 id="思考题">思考题</h2>
+<h3 id="thinking-1-1-objdump">thinking 1.1 objdump</h3>
+<blockquote>
+<p>问题：分别使用x86工具链和MIPS交叉编译工具链，重复编译和解析过程，观察结果并解析objdump传入参数含义</p>
 </blockquote>
-<p>P4第一次课下挂掉了。。。且反思了两天也没反思出来确凿的错在哪里，所以直接记录第二次上机的题目了QAQ</p>
-<h3 id="很模糊的回忆版题面">很模糊的回忆版题面</h3>
-<p>回忆仅供参考，有细节比如寄存器的序号可能记不清。</p>
-<h4 id="T1-指令：CRR">T1 指令：CRR</h4>
-<h5 id="指令大意">指令大意</h5>
-<p>将rs和rt寄存器中的数分别右移，比较大小，存入rd寄存器中。</p>
-<h5 id="RTL">RTL</h5>
-<p>形式：crr rd,rs,rt</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def:</span><br><span class="line">    rotate_<span class="meta">right</span>(<span class="keyword">x</span>,n) //将<span class="keyword">x</span>循环右移n位，如rotate_<span class="meta">right</span>(4<span class="string">&#x27;b1011,2)=4&#x27;</span>b1110</span><br><span class="line"><span class="keyword">if</span> rotate_<span class="meta">right</span>(gpr[rs],rs)&gt;=rotate_<span class="meta">right</span>(gpr[rt],rt) <span class="keyword">then</span></span><br><span class="line">    gpr[rd] &lt;- rotate_right_<span class="meta">right</span>(gpr[rs],rs)</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    gpr[rd] &lt;- rotate_right_<span class="meta">right</span>(gpr[rt],rt)</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-<p>注意本题的比较为 <strong>有符号</strong> 比较，且若<code>n=0</code>，则<code>rotate_right(x,n)=x</code>。</p>
-<h5 id="简要思路">简要思路</h5>
+<p>回答：</p>
+<h4 id="编写hello-c文件">编写hello.c文件</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> &lt;stdio.h</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">      <span class="built_in">puts</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="首先使用x86工具链">首先使用x86工具链</h4>
 <ul>
-<li>修改Controller进行译码，调整寄存器写使能和多路选择器取值等内容。</li>
-<li>在ALU中进行修改，循环右移我采取的是位拼接方法。</li>
-<li>最后比较，注意有符号比较，将结果加入ALUout多路选择器。</li>
+<li>输入 <code>gcc -g -c hello.c -o hello_x86.o</code>只编译不链接</li>
+<li>输入<code>objdump --section=.text --disassemble=main --source hello_x86.o</code>进行反汇编<br>
+输出为</li>
 </ul>
-<h4 id="T2-指令：BRB">T2 指令：BRB</h4>
-<h5 id="指令大意-2">指令大意</h5>
-<p>从rs寄存器中取指定 <strong>字节</strong> ，若该字节倒序为偶数，则跳转；另外无条件将数据存至rt寄存器</p>
-<h5 id="RTL-2">RTL</h5>
-<p>形式：brb rs,rt,offset</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def:</span><br><span class="line">    <span class="keyword">reverse</span>(x)<span class="comment">//翻转</span></span><br><span class="line"><span class="built_in">byte</span> &lt;- offset[<span class="number">1</span>:<span class="number">0</span>]</span><br><span class="line">temp &lt;- GPR[rs] [<span class="number">7</span>+<span class="number">8</span>*<span class="built_in">byte</span>:<span class="number">8</span>*<span class="built_in">byte</span>]</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">reverse</span>(temp) <span class="keyword">mod</span> <span class="number">2</span> = <span class="number">0</span>  then</span><br><span class="line">    PC &lt;- PC + <span class="number">4</span> + sign_extend(offset||<span class="number">00</span>)</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    PC = PC + <span class="number">4</span>;</span><br><span class="line">endif</span><br><span class="line">GPR[rt] &lt;- sign_extend(<span class="keyword">reverse</span>(temp))<span class="comment">//无条件写寄存器</span></span><br></pre></td></tr></table></figure>
-<h5 id="简要思路-2">简要思路</h5>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">hello_x86.o：     文件格式 elf64-x86<span class="number">-64</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line"><span class="number">0000000000000000</span> &lt;main:</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> &lt;stdio.h</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="number">0</span>:   f3 <span class="number">0f</span> <span class="number">1</span>e fa             endbr64</span><br><span class="line">  <span class="number">4</span>:   <span class="number">55</span>                      push   %rbp</span><br><span class="line">  <span class="number">5</span>:   <span class="number">48</span> <span class="number">89</span> e5                mov    %rsp,%rbp</span><br><span class="line">       <span class="title function_">puts</span><span class="params">(<span class="string">&quot;Hello World!&quot;</span>)</span>;</span><br><span class="line">  <span class="number">8</span>:   <span class="number">48</span> <span class="number">8</span>d <span class="number">05</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>    lea    <span class="number">0x0</span>(%rip),%rax        <span class="meta"># f &lt;main+0xf</span></span><br><span class="line">  f:   <span class="number">48</span> <span class="number">89</span> c7                mov    %rax,%rdi</span><br><span class="line"> <span class="number">12</span>:   e8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">17</span> &lt;main+<span class="number">0x17</span></span><br><span class="line">       <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> <span class="number">17</span>:   b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</span><br><span class="line">&#125;</span><br><span class="line"> <span class="number">1</span>c:   <span class="number">5</span>d                      pop    %rbp</span><br><span class="line"> <span class="number">1</span>d:   c3                      ret</span><br></pre></td></tr></table></figure>
+<p>可以看出<code>call</code>语句中<code>e8</code>后面内容为0</p>
 <ul>
-<li>修改Controller进行译码，调整寄存器写使能和多路选择器取值等内容。</li>
-<li>在ALU中进行修改，直接采取三目运算符取字节比较不易出错，再实现temp翻转后(按位拼接或者for循环)判断<code>reverse(temp)</code>的0位是否为1。</li>
-<li>修改NPC模块，按跳转逻辑进行NPC跳转。</li>
+<li>输入<code>gcc -g -static hello_x86.o -o hello_x86</code>进行静态链接</li>
+<li>输入<code>objdump --section=.text --disassemble=main --source hello_x86</code>进行反汇编</li>
 </ul>
-<h4 id="T3-指令">T3 指令</h4>
-<h5 id="指令大意：">指令大意：</h5>
-<p>在lw的基础上做扩展，从数据内存中取出一个字，求出这个字的后继格雷码。若格雷码值大于rt寄存器中的值，则将取出的字存入<code>31-rt</code>寄存器中，否则直接存入rt寄存器中。</p>
-<p>RTL给出了后继格雷码的求解方法，按照RTL操作即可。</p>
-<h3 id="上机完整心路历程">上机完整心路历程</h3>
-<p>由于上次P4挂掉，所以这周课下一边搭P5一边小小练习P4。在搭P5的过程中对verilog更加熟练，其实对P4上机没什么坏处（？）<br>
-本次第一题快速搭完，修改了基础语法错误后重新提交，仍然WA，最后发现可能提交的未保存的文件…虽然我确认ISE保存了且testbench都已经运行了…但依然交的不是最新版…不知道为什么，把ISE关掉重新打包后就通过了。（浪费了一点点时间…）<br>
-第二题把ALUop接入别的模块时，input wire位宽误写成[31:0]了，检查了很久才看出来，改后就通过了。<br>
-第三题鏖战40min仍WA…可恶…遂没什么经验可以分享。遗憾离场。</p>
-<h3 id="小小经验总结">小小经验总结</h3>
+<p>输出为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hello_x86：     文件格式 elf64-x86<span class="number">-64</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line"><span class="number">00000000004018b</span>5 &lt;main&gt;:</span><br><span class="line">  <span class="number">4018b</span>5:       f3 <span class="number">0f</span> <span class="number">1</span>e fa             endbr64</span><br><span class="line">  <span class="number">4018b</span>9:       <span class="number">55</span>                      push   %rbp</span><br><span class="line">  <span class="number">4018b</span>a:       <span class="number">48</span> <span class="number">89</span> e5                mov    %rsp,%rbp</span><br><span class="line">  <span class="number">4018b</span>d:       <span class="number">48</span> <span class="number">8</span>d <span class="number">05</span> <span class="number">4</span>c d7 <span class="number">07</span> <span class="number">00</span>    lea    <span class="number">0x7d74c</span>(%rip),%rax        # <span class="number">47f</span>010 &lt;__rseq_flags+<span class="number">0xc</span>&gt;</span><br><span class="line">  <span class="number">4018</span>c4:       <span class="number">48</span> <span class="number">89</span> c7                mov    %rax,%rdi</span><br><span class="line">  <span class="number">4018</span>c7:       e8 <span class="number">64</span> <span class="number">34</span> <span class="number">00</span> <span class="number">00</span>          call   <span class="number">404</span>d30 &lt;_IO_puts&gt;</span><br><span class="line">  <span class="number">4018</span>cc:       b8 <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>          mov    $<span class="number">0x0</span>,%eax</span><br><span class="line">  <span class="number">4018</span>d1:       <span class="number">5</span>d                      pop    %rbp</span><br><span class="line">  <span class="number">4018</span>d2:       c3                      ret</span><br></pre></td></tr></table></figure>
+<p>可以看到call中e8后面不为0</p>
+<h4 id="使用mips工具链">使用mips工具链</h4>
 <ul>
-<li>对verilog语法需要再多熟悉一些，写第一题的时候突然忘记有符号数怎么取了…对心态会有一定影响。</li>
-<li>写的时候尽量不要心急（虽然感觉对我来说有点难），因为一个小小的手误写出来的bug，找的时候需要找很久很久…</li>
-<li>写之前先宏观地把整体需要修改什么理清楚，否则有概率会被细节卡住以后忘记宏观层面还需要修改什么。</li>
+<li>输入 <code>mips-linux-gnu-gcc -g -c hello.c -o hello_mips.o</code>只编译不链接</li>
+<li>输入<code>mips-linux-gnu-objdump --section=.text --disassemble=main --source hello_mips.o</code>进行反汇编</li>
 </ul>
-<p>上周挂掉以后emo了很久，但是也因此P5多了一周时间，可以获得中测，也算是一点点好处吧哎哎。<br>
-这周要开始完善P5 and 开始尝试P6课下啦，继续努力啦争取下周不挂！GO GO GO！</p>
+<p>输出为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">hello_mips.o：     文件格式 elf32-tradbigmips</span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line"><span class="number">00000000</span> &lt;main&gt;:</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">   <span class="number">0</span>:   <span class="number">27b</span>dffe0        addiu   sp,sp,<span class="number">-32</span></span><br><span class="line">   <span class="number">4</span>:   afbf001c        sw      ra,<span class="number">28</span>(sp)</span><br><span class="line">   <span class="number">8</span>:   afbe0018        sw      s8,<span class="number">24</span>(sp)</span><br><span class="line">   c:   <span class="number">03</span>a0f025        move    s8,sp</span><br><span class="line">  <span class="number">10</span>:   <span class="number">3</span>c1c0000        lui     gp,<span class="number">0x0</span></span><br><span class="line">  <span class="number">14</span>:   <span class="number">279</span>c0000        addiu   gp,gp,<span class="number">0</span></span><br><span class="line">  <span class="number">18</span>:   afbc0010        sw      gp,<span class="number">16</span>(sp)</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">  <span class="number">1</span>c:   <span class="number">3</span>c020000        lui     v0,<span class="number">0x0</span></span><br><span class="line">  <span class="number">20</span>:   <span class="number">24440000</span>        addiu   a0,v0,<span class="number">0</span></span><br><span class="line">  <span class="number">24</span>:   <span class="number">8f</span>820000        lw      v0,<span class="number">0</span>(gp)</span><br><span class="line">  <span class="number">28</span>:   <span class="number">0040</span>c825        move    t9,v0</span><br><span class="line">  <span class="number">2</span>c:   <span class="number">0320f</span>809        jalr    t9</span><br><span class="line">  <span class="number">30</span>:   <span class="number">00000000</span>        nop</span><br><span class="line">  <span class="number">34</span>:   <span class="number">8f</span>dc0010        lw      gp,<span class="number">16</span>(s8)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="number">38</span>:   <span class="number">00001025</span>        move    v0,zero</span><br><span class="line">&#125;</span><br><span class="line">  <span class="number">3</span>c:   <span class="number">03</span>c0e825        move    sp,s8</span><br><span class="line">  <span class="number">40</span>:   <span class="number">8f</span>bf001c        lw      ra,<span class="number">28</span>(sp)</span><br><span class="line">  <span class="number">44</span>:   <span class="number">8f</span>be0018        lw      s8,<span class="number">24</span>(sp)</span><br><span class="line">  <span class="number">48</span>:   <span class="number">27b</span>d0020        addiu   sp,sp,<span class="number">32</span></span><br><span class="line">  <span class="number">4</span>c:   <span class="number">03e00008</span>        jr      ra</span><br><span class="line">  <span class="number">50</span>:   <span class="number">00000000</span>        nop</span><br></pre></td></tr></table></figure>
+<p>可以看出立即数都为0，即还未分配地址。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>c:   <span class="number">3</span>c020000        lui     v0,<span class="number">0x0</span></span><br><span class="line"><span class="number">20</span>:   <span class="number">24440000</span>        addiu   a0,v0,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>输入<code>mips-linux-gnu-gcc -g -static hello_mips.o -o hello_mips</code>进行静态链接</li>
+<li>输入<code>mips-linux-gnu-objdump --section=.text --disassemble=main --source hello_mips</code>进行反汇编<br>
+输出为</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">hello_mips：     文件格式 elf32-tradbigmips</span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line"><span class="number">00400790</span> &lt;main&gt;:</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="number">400790</span>:       <span class="number">27b</span>dffe0        addiu   sp,sp,<span class="number">-32</span></span><br><span class="line">  <span class="number">400794</span>:       afbf001c        sw      ra,<span class="number">28</span>(sp)</span><br><span class="line">  <span class="number">400798</span>:       afbe0018        sw      s8,<span class="number">24</span>(sp)</span><br><span class="line">  <span class="number">40079</span>c:       <span class="number">03</span>a0f025        move    s8,sp</span><br><span class="line">  <span class="number">4007</span>a0:       <span class="number">3</span>c1c004a        lui     gp,<span class="number">0x4a</span></span><br><span class="line">  <span class="number">4007</span>a4:       <span class="number">279</span>c8f80        addiu   gp,gp,<span class="number">-28800</span></span><br><span class="line">  <span class="number">4007</span>a8:       afbc0010        sw      gp,<span class="number">16</span>(sp)</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">  <span class="number">4007</span>ac:       <span class="number">3</span>c020046        lui     v0,<span class="number">0x46</span></span><br><span class="line">  <span class="number">4007b</span>0:       <span class="number">24443</span>a00        addiu   a0,v0,<span class="number">14848</span></span><br><span class="line">  <span class="number">4007b</span>4:       <span class="number">8f</span>828060        lw      v0,<span class="number">-32672</span>(gp)</span><br><span class="line">  <span class="number">4007b</span>8:       <span class="number">0040</span>c825        move    t9,v0</span><br><span class="line">  <span class="number">4007b</span>c:       <span class="number">041103</span>c8        bal     <span class="number">4016e0</span> &lt;_IO_puts&gt;</span><br><span class="line">  <span class="number">4007</span>c0:       <span class="number">00000000</span>        nop</span><br><span class="line">  <span class="number">4007</span>c4:       <span class="number">8f</span>dc0010        lw      gp,<span class="number">16</span>(s8)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="number">4007</span>c8:       <span class="number">00001025</span>        move    v0,zero</span><br><span class="line">&#125;</span><br><span class="line">  <span class="number">4007</span>cc:       <span class="number">03</span>c0e825        move    sp,s8</span><br><span class="line">  <span class="number">4007</span>d0:       <span class="number">8f</span>bf001c        lw      ra,<span class="number">28</span>(sp)</span><br><span class="line">  <span class="number">4007</span>d4:       <span class="number">8f</span>be0018        lw      s8,<span class="number">24</span>(sp)</span><br><span class="line">  <span class="number">4007</span>d8:       <span class="number">27b</span>d0020        addiu   sp,sp,<span class="number">32</span></span><br><span class="line">  <span class="number">4007</span>dc:       <span class="number">03e00008</span>        jr      ra</span><br><span class="line">  <span class="number">4007e0</span>:       <span class="number">00000000</span>        nop</span><br></pre></td></tr></table></figure>
+<p>可以看出地址已经分配完毕</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4007</span>ac:       <span class="number">3</span>c020046        lui     v0,<span class="number">0x46</span></span><br><span class="line"><span class="number">4007b</span>0:       <span class="number">24443</span>a00        addiu   a0,v0,<span class="number">14848</span></span><br></pre></td></tr></table></figure>
+<h4 id="objdump传入参数">objdump传入参数</h4>
+<ul>
+<li><code>--section=.text</code>代表只处理代码段</li>
+<li><code>--disassemble=main</code>代表只反汇编<code>main</code>函数</li>
+<li><code>--source</code>表示把源代码和反编译代码混在一起输出，方便调试</li>
+</ul>
+<h3 id="thinking-1-2-readelf程序的问题">thinking 1.2 readelf程序的问题</h3>
+<h4 id="解析mos">解析mos</h4>
+<blockquote>
+<p>问题：使用编写的readelf程序，解析之前target目录下生成的内核ELF文件</p>
+</blockquote>
+<p>输入<code>./tools/readelf/readelf ./target/mos</code>解析内核ELF文件</p>
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">1</span>:<span class="number">0x80020000</span></span><br><span class="line"><span class="number">2</span>:<span class="number">0x80021950</span></span><br><span class="line"><span class="number">3</span>:<span class="number">0x80021968</span></span><br><span class="line"><span class="number">4</span>:<span class="number">0x80021980</span></span><br><span class="line"><span class="number">5</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">6</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">7</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">8</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">9</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">10</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">11</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">12</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">13</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">14</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">15</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">16</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">17</span>:<span class="number">0x0</span></span><br><span class="line"><span class="number">18</span>:<span class="number">0x0</span></span><br></pre></td></tr></table></figure>
+<h4 id="解析readelf">解析readelf</h4>
+<blockquote>
+<p>我们编写的readelf程序不能解析readelf文件本身，而系统工具可以，为什么？</p>
+</blockquote>
+<p>使用系统工具<code>readelf -h ./tools/readelf/readelf</code></p>
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ELF 头：</span><br><span class="line">  Magic：   <span class="number">7f</span> <span class="number">45</span> <span class="number">4</span>c <span class="number">46</span> <span class="number">02</span> <span class="number">01</span> <span class="number">01</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line">  类别:                              ELF64</span><br><span class="line">  数据:                              <span class="number">2</span> 补码，小端序 (little endian)</span><br><span class="line">  Version:                           <span class="number">1</span> (current)</span><br><span class="line">  OS/ABI:                            UNIX - System V</span><br><span class="line">  ABI 版本:                          <span class="number">0</span></span><br><span class="line">  类型:                              DYN (Position-Independent Executable file)</span><br><span class="line">  系统架构:                          Advanced Micro Devices X86<span class="number">-64</span></span><br><span class="line">  版本:                              <span class="number">0x1</span></span><br><span class="line">  入口点地址：               <span class="number">0x1180</span></span><br><span class="line">  程序头起点：          <span class="number">64</span> (bytes into file)</span><br><span class="line">  Start of section headers:          <span class="number">14488</span> (bytes into file)</span><br><span class="line">  标志：             <span class="number">0x0</span></span><br><span class="line">  Size of this header:               <span class="number">64</span> (bytes)</span><br><span class="line">  Size of program headers:           <span class="number">56</span> (bytes)</span><br><span class="line">  Number of program headers:         <span class="number">13</span></span><br><span class="line">  Size of section headers:           <span class="number">64</span> (bytes)</span><br><span class="line">  Number of section headers:         <span class="number">31</span></span><br><span class="line">  Section header <span class="built_in">string</span> table index: <span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p><code>tools/readelf</code>目录下的<code>Makefile</code>内容为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">%.o: %.c</span><br><span class="line">  $(CC) -c $&lt;</span><br><span class="line"></span><br><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">readelf: main.o readelf.o</span><br><span class="line">  $(CC) $^ -o $@</span><br><span class="line"></span><br><span class="line">hello: hello.c</span><br><span class="line">  $(CC) $^ -o $@ -m32 -<span class="type">static</span> -g</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">  rm -f *.o readelf hello</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hello文件中写到了<code>-m32</code>，强制转换为32位，且为static静态。</p>
+<h3 id="thinking-1-3-内核入口地址的问题">thinking 1.3 内核入口地址的问题</h3>
+<blockquote>
+<p>问题：MIPS体系结构上电时，启动入口地址为0xBFC00000（或一个其他确定的地址）。但实验操作系统的内核入口没放在上电启动地址，而是按照内存布局图放置。<br>
+思考为什么依然能保证内核入口被正确跳转到。<br>
+（hint:实验启动过程的两阶段执行者？）</p>
+</blockquote>
+<p>在内核编译阶段，通过 .ld 文件明确指定了 ENTRY(_start) 和基地址 0x80020000。确保了内核代码内部所有的函数调用和全局变量访问地址在编译时就已基于该运行地址计算正确。<br>
+启动分为两部分：<br>
+第一阶段是由Bootloader引导，其代码严格对齐在CPU的上电复位向量0xBFC00000。<br>
+CPU上电后，负责初始化最基本的硬件。<br>
+第二阶段是操作系统内核接管系统，管理进程和内存。<br>
+Bootloader完成搬运后，执行最后一条跳转指令，直接将程序计数器（PC）强制指向内核的入口地址。</p>
+<h2 id="难点分析">难点分析</h2>
+<h3 id="ELF文件">ELF文件</h3>
+<p><img src="image.png" alt="alt text"></p>
+<ul>
+<li>构成：ELF头、段头表（程序头表）、节头表、段头表中每个表项、节头表中每个表项</li>
+<li>分类：重定位文件（.o）、可执行文件（.exe）、共享对象文件（.so）</li>
+<li>节头表——组成可重定位文件，参与可执行文件和可共享文件的<strong>链接</strong></li>
+<li>段头表——组成可执行文件/可共享文件，在运行时为<strong>加载器</strong>提供信息</li>
+</ul>
+<h3 id="MIPS内存布局">MIPS内存布局</h3>
+<p><img src="image-1.png" alt="alt text"><br>
+<img src="image-2.png" alt="alt text"></p>
+<p>如上图所示</p>
+<ul>
+<li>kuseg: <strong>用户态</strong>下唯一可用的地址空间，通过MMU中的TLB进行地址转换，<strong>通过cache</strong></li>
+<li>kseg0: 内核态下可用，经过MMU（地址最高位清0），<strong>经过cache</strong></li>
+<li>kseg1: 内核态下可用，经过MMU（高三位清0），<strong>不经过cache</strong></li>
+<li>kseg2: 内核态下可用，通过MMU中的TLB地址转换，<strong>通过cache</strong></li>
+</ul>
+<p>载入内核时不能用需要TLB转换的，而kseg1不经过cache，一般用于MMIO访问外设，所以内核放入<strong>kseg0</strong>中</p>
+<h3 id="Linker-Script相关">Linker Script相关</h3>
+<p>记录各个节如何映射到段，以及各个段应被加载到的位置</p>
+<p>重要的节 ：</p>
+<ul>
+<li>.text : 可执行文件中代码</li>
+<li>.data : 需要被初始化的全局变量 &amp; 静态变量</li>
+<li>.bss : 未初始化的全局变 &amp; 静态变量</li>
+</ul>
+<h3 id="其他知识点">其他知识点</h3>
+<ul>
+<li>Cross Compile 交叉编译：目标代码运行的平台和编译器运行的平台不同（如本实验编译器在x86下运行，生成的MOS内核在MIPS平台运行）</li>
+<li>变长参数等相关知识</li>
+</ul>
+<h2 id="实验体会">实验体会</h2>
+<p>lab1和lab0区别比较大，lab0只是初识了命令行等基本知识，而lab1逐渐真正开始接触mos内核等核心程序。<br>
+虽然需要填写的内容并不多，但是需要仔细阅读的代码和需要了解的前置知识比较多，第一次接触时有点一头雾水。</p>
+<p>第一次阅读完指导书，对需要干的事情并不清晰。总结出来的大致流程是：</p>
+<ul>
+<li>粗略阅读指导书和仓库代码框架，大致理解本次实验的目的</li>
+<li>看对应的课程视频，加深对本次知识的理解</li>
+<li>在视频和指导书的共同辅助下先自己尝试填写一遍代码，再对照github中发布的答案仔细核对理解。</li>
+<li>基本完成任务实现之后，再仔细回看指导书和视频。并详细阅读之前仓库中没仔细阅读的功能相关的代码</li>
+</ul>
+<p>感觉这样才对本次实验的内容有点底，然而认知其实依然不深，希望可以在之后的lab中逐渐加深对操作系统实现的掌握程度。</p>
+<p>上机中发现对回调函数依然理解不深，仿照print需要实现一个scanf，但是对与out类似的in的理解存在问题，导致extra没做出来，还是需要把代码细节搞清楚。</p>
 
 
         <hr>
@@ -545,12 +612,12 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/P6设计文档/" data-toggle="tooltip" data-placement="top" title="P6 流水线CPU设计文档">&larr; Previous Post</a>
+            <a href="/cn/OS-Lab2-实验报告/" data-toggle="tooltip" data-placement="top" title="OS Lab2 实验报告">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/cn/2025-OOpre-课程总结/" data-toggle="tooltip" data-placement="top" title="2025 OOpre 课程总结">Next Post &rarr;</a>
+            <a href="/cn/2026-OO-U1总结/" data-toggle="tooltip" data-placement="top" title="2026-OO-U1总结">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -599,7 +666,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=P4 上机感想&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/P4上机感想/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=OS Lab1 实验报告&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/OS-Lab1-实验报告/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -634,7 +701,7 @@
       repo: '',
       owner: '',
       admin: '',
-      id: 'Mon Nov 17 2025 22:18:54 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Apr 01 2026 22:22:55 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -687,7 +754,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BE%88%E6%A8%A1%E7%B3%8A%E7%9A%84%E5%9B%9E%E5%BF%86%E7%89%88%E9%A2%98%E9%9D%A2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">很模糊的回忆版题面</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#T1-%E6%8C%87%E4%BB%A4%EF%BC%9ACRR"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">T1 指令：CRR</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%A7%E6%84%8F"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">指令大意</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#RTL"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">RTL</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%AE%80%E8%A6%81%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">简要思路</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#T2-%E6%8C%87%E4%BB%A4%EF%BC%9ABRB"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">T2 指令：BRB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%A7%E6%84%8F-2"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">指令大意</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#RTL-2"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">RTL</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%AE%80%E8%A6%81%E6%80%9D%E8%B7%AF-2"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">简要思路</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#T3-%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">T3 指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%A7%E6%84%8F%EF%BC%9A"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">指令大意：</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8A%E6%9C%BA%E5%AE%8C%E6%95%B4%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">上机完整心路历程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%8F%E5%B0%8F%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">小小经验总结</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">思考题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-1-1-objdump"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">thinking 1.1 objdump</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BC%96%E5%86%99hello-c%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">编写hello.c文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%A6%96%E5%85%88%E4%BD%BF%E7%94%A8x86%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">首先使用x86工具链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8mips%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">使用mips工具链</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#objdump%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">objdump传入参数</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-1-2-readelf%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">thinking 1.2 readelf程序的问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%A7%A3%E6%9E%90mos"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">解析mos</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%A7%A3%E6%9E%90readelf"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">解析readelf</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-1-3-%E5%86%85%E6%A0%B8%E5%85%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">thinking 1.3 内核入口地址的问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9A%BE%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">难点分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ELF%E6%96%87%E4%BB%B6"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">ELF文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MIPS%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">MIPS内存布局</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linker-Script%E7%9B%B8%E5%85%B3"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Linker Script相关</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%B6%E4%BB%96%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">其他知识点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">实验体会</span></a></li></ol>
         
         </div>
       </aside>
@@ -710,13 +777,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#CO" title="CO">CO</a>
-            
-            <a class="tag" href="/tags/#课上" title="课上">课上</a>
-            
-            <a class="tag" href="/tags/#P4" title="P4">P4</a>
-            
-            <a class="tag" href="/tags/#verilog" title="verilog">verilog</a>
+            <a class="tag" href="/tags/#OS" title="OS">OS</a>
             
           </div>
         </section>
