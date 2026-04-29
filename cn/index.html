@@ -492,6 +492,51 @@
   <!-- top end -->
   
 
+  <a href="/cn/2026-OO-U2总结/">
+    <h2 class="post-title">
+      2026-OO-U2总结
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      迭代作业最终架构设计U2最终实现的是一个双轿厢电梯的多线程调度任务。最终作业整体架构如下图所示：
+
+整体架构由15个类组成，主要使用生产者-消费者模式，划分为以下四个层次：
+
+
+系统启动与核心线程（灰色）
+
+
+Main：负责全局共享资源的初始化，创建启动所有功能线程。
+InputThread：生产者线程，将原始请求解析为对应的实体对象并投入全局队列。
+DispatchThread：调度决策线......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Nuyoah on
+    2026-04-29
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#OO" title="OO">OO</a>
+    
+    <a href="/tags/#U2" title="U2">U2</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/OS-Lab2-实验报告/">
     <h2 class="post-title">
       OS Lab2 实验报告
@@ -916,55 +961,6 @@ P5出的题目很有规律，基本每次都是 计算 + 跳转 + 访存
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/P4上机感想/">
-    <h2 class="post-title">
-      P4 上机感想
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      
-通过阅读此篇文章，您可以大致了解2025年CO P4上机题目，希望对大家略有帮助~
-
-P4第一次课下挂掉了。。。且反思了两天也没反思出来确凿的错在哪里，所以直接记录第二次上机的题目了QAQ
-很模糊的回忆版题面
-回忆仅供参考，有细节比如寄存器的序号可能记不清。
-T1 指令：CRR
-指令大意
-将rs和rt寄存器中的数分别右移，比较大小，存入rd寄存器中。
-RTL
-形式：crr rd,rs,rt......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Nuyoah on
-    2025-11-17
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#CO" title="CO">CO</a>
-    
-    <a href="/tags/#课上" title="课上">课上</a>
-    
-    <a href="/tags/#P4" title="P4">P4</a>
-    
-    <a href="/tags/#verilog" title="verilog">verilog</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -1017,7 +1013,7 @@ RTL
     
     
     
-    <a href="/tags/#OO" title="OO" rel="1">OO</a>
+    <a href="/tags/#OO" title="OO" rel="2">OO</a>
     
     
     
@@ -1066,6 +1062,10 @@ RTL
     
     
     <a href="/tags/#P7" title="P7" rel="2">P7</a>
+    
+    
+    
+    <a href="/tags/#U2" title="U2" rel="1">U2</a>
     
     
   </div>
@@ -1128,6 +1128,10 @@ RTL
 <div class="widget">
   <ul>
     
+    <a href="2026-OO-U2%E6%80%BB%E7%BB%93/">
+      <li>2026-OO-U2总结</li>
+    </a>
+    
     <a href="OS-Lab2-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">
       <li>OS Lab2 实验报告</li>
     </a>
@@ -1144,10 +1148,6 @@ RTL
       <li>OS Lab0 实验报告</li>
     </a>
     
-    <a href="P7%E4%B8%8A%E6%9C%BA%E6%84%9F%E6%83%B3/">
-      <li>P7上机感想</li>
-    </a>
-    
   </ul>
 </div>
 
@@ -1158,7 +1158,7 @@ RTL
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2026/04/">April 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2026/03/">March 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/12/">December 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/11/">November 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/10/">October 2025</a><span class="archive-list-count">1</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2026/04/">April 2026</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2026/03/">March 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/12/">December 2025</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/11/">November 2025</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2025/10/">October 2025</a><span class="archive-list-count">1</span></li></ul>
 </div>
 
 

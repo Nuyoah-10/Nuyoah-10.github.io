@@ -153,10 +153,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://nuyoah-10.github.io/cn/OS-Lab2-实验报告/">
+  <link rel="canonical" href="https://nuyoah-10.github.io/cn/2026-OO-U2总结/">
   <title>
     
-      OS Lab2 实验报告 - stay hungry stay foolish
+      2026-OO-U2总结 - stay hungry stay foolish
     
   </title>
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -403,14 +403,16 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#OS" title="OS">OS</a>
+              <a class="tag" href="/tags/#OO" title="OO">OO</a>
+              
+              <a class="tag" href="/tags/#U2" title="U2">U2</a>
               
             </div>
-            <h1>OS Lab2 实验报告</h1>
+            <h1>2026-OO-U2总结</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by Nuyoah on
-              2026-04-16
+              2026-04-29
             </span>
 
 
@@ -418,11 +420,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">7</span> Minutes
+              Estimated Reading Time <span class="post-count">11</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.9k</span> In Total
+              Words <span class="post-count">3.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -484,234 +486,141 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="思考题">思考题</h2>
-<h3 id="thinking-2-1-程序代码中的地址">thinking 2.1 程序代码中的地址</h3>
-<blockquote>
-<p>问题：C程序中指针变量存储的是虚拟地址 or 物理地址？MIPS中lw和sw使用的地址是虚拟地址 or 物理地址？</p>
-</blockquote>
-<p>回答：都是虚拟地址</p>
-<h3 id="thinking-2-2-链表宏">thinking 2.2 链表宏</h3>
-<blockquote>
-<p>问题：宏实现链表的好处。/usr/include/sys/queue.h中单向链表和循环链表的实现，和本实验中双向链表比较。分析三者插入删除操作性能差异。</p>
-</blockquote>
-<p>回答：</p>
-<ol>
-<li>链表宏的好处</li>
+        <h2 id="迭代作业最终架构设计"><a href="#迭代作业最终架构设计" class="headerlink" title="迭代作业最终架构设计"></a>迭代作业最终架构设计</h2><p>U2最终实现的是一个双轿厢电梯的多线程调度任务。<br>最终作业整体架构如下图所示：</p>
+<p><img src="image-1.png" alt="alt text"></p>
+<p>整体架构由<strong>15个类</strong>组成，主要使用<strong>生产者-消费者</strong>模式，划分为以下四个层次：</p>
+<ul>
+<li><ol>
+<li><strong>系统启动与核心线程</strong>（灰色）</li>
 </ol>
 <ul>
-<li>使用简单，有很多重复使用的代码可以方便编写，易于维护。</li>
-<li>此外可以支持不同类型，只需要形式相同即可</li>
+<li><code>Main</code>：负责全局共享资源的初始化，创建启动所有功能线程。</li>
+<li><code>InputThread</code>：生产者线程，将原始请求解析为对应的实体对象并投入全局队列。</li>
+<li><code>DispatchThread</code>：调度决策线程，从全局队列提取请求，并根据实时电梯状态将其分配至最合适的电梯/井道。</li>
+<li><code>ElevatorThread</code>：执行器线程，模拟电梯物理运行，通过状态机转换执行任务。</li>
 </ul>
-<ol start="2">
-<li>插入删除操作性能差异</li>
+</li>
+<li><ol>
+<li><strong>共享资源与缓冲区</strong>（蓝色）</li>
 </ol>
-<table>
-<thead>
-<tr>
-<th>操作场景</th>
-<th>单向链表</th>
-<th>双向链表</th>
-<th>循环链表</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>头部插入</td>
-<td>O(1)</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>头部删除</td>
-<td>O(1)</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>在节点后插入</td>
-<td>O(1)</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>在节点前插入</td>
-<td>O(n) (需遍历)</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>删除任意指定节点</td>
-<td>O(n) (需遍历)</td>
-<td>O(1)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>尾部访问</td>
-<td>O(n)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="thinking-2-3-Page-list结构体">thinking 2.3 Page_list结构体</h3>
-<blockquote>
-<p>问题：选择Page_list正确的展开形式</p>
-</blockquote>
-<p>回答：正确的展开形式是C</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">structPage_list&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">            structPage *le_next;</span><br><span class="line">            structPage **le_prev;</span><br><span class="line">        &#125;pp_link;</span><br><span class="line">        u_shortpp_ref;</span><br><span class="line">    &#125;*lh_first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先<code>le_prev</code>由于要指向前一个项的<code>*le_next</code>指针，所以需要用<code>**le_prev</code>；<br>
-另外<code>lh_first</code>需要是指针类型，指向第一个元素</p>
-<h3 id="thinking-2-4-地址空间">thinking 2.4 地址空间</h3>
-<blockquote>
-<p>问题1：ASID必要性</p>
-</blockquote>
-<p>回答：多进程操作系统，不进程可能使用相同的虚拟地址，但映射到不同的物理地址。引入ASID记录当前表项属于哪个进程。CPU查找TLB时同时匹配VPN和ASID，提高多线程地址转换效率。</p>
-<blockquote>
-<p>问题2：结合ASID段位数，说明4Kc中可容纳不同的地址空间最大数量</p>
-</blockquote>
-<p>回答：ASID有<code>0-7</code>共八位，可以容纳 $2 ^ 8 = 256$  个不同地址空间</p>
-<h3 id="thinking-2-5-tlb-invalidate">thinking 2.5 tlb_invalidate</h3>
-<blockquote>
-<p>问题1：<code>tlb_invalidate</code> 和 <code>tlb_out</code> 的调用关系</p>
-</blockquote>
-<p>回答：<code>tlb_invalidate</code>在<code>kern/tlbex.c</code>中，调用了<code>tlb_out</code></p>
-<blockquote>
-<p>请用一句话概括 <code>tlb_invalidate</code> 的作用</p>
-</blockquote>
-<p>回答：用于从TLB中根据指定的虚拟地址和ASID查找并 <strong>删除对应的旧表项</strong>（防止进程切换或内存映射改变后出现错误）</p>
-<blockquote>
-<p>逐行解释 <code>tlb_out</code> 中的汇编代码</p>
-</blockquote>
-<p>回答：<br>
-<code>tlb_out</code>的逻辑是：存储，查找，匹配则删除，恢复</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">LEAF(tlb_out)  <span class="comment">//定义叶子函数tlb_out</span></span><br><span class="line">.<span class="built_in">set</span> noreorder <span class="comment">//禁止编译器进行乱序优化</span></span><br><span class="line">    mfc0    t0, CP0_ENTRYHI <span class="comment">//将当前CP0_ENTRYHI寄存器值存入t0</span></span><br><span class="line">    mtc0    a0, CP0_ENTRYHI <span class="comment">//将a0（待删除VPN和ASID）写入ENTRYHI</span></span><br><span class="line">    nop <span class="comment">//延时槽</span></span><br><span class="line">    tlbp <span class="comment">//根据ENTRYHI中的Key查找TLB，将表项索引存入Index寄存器</span></span><br><span class="line">    nop <span class="comment">//延时槽</span></span><br><span class="line">    <span class="comment">/* Step 2: Fetch the probe result from CP0.Index */</span></span><br><span class="line">    mfc0    t1, CP0_INDEX <span class="comment">//从CP0_INDEX中读取查找结果到t1</span></span><br><span class="line">.<span class="built_in">set</span> reorder <span class="comment">//允许编译器优化</span></span><br><span class="line">    bltz    t1, NO_SUCH_ENTRY <span class="comment">//如果t1 &lt; 0,没找到，结束</span></span><br><span class="line">.<span class="built_in">set</span> noreorder <span class="comment">//禁止乱序（关键写操作）</span></span><br><span class="line">    mtc0    zero, CP0_ENTRYHI <span class="comment">//清零ENTRYHI</span></span><br><span class="line">    mtc0    zero, CP0_ENTRYLO0 <span class="comment">//清零ENTRYLO0</span></span><br><span class="line">    mtc0    zero, CP0_ENTRYLO1 <span class="comment">//清零ENTRYLO1</span></span><br><span class="line">    nop <span class="comment">//延时槽</span></span><br><span class="line">    tlbwi <span class="comment">//根据INDEX索引，将CP0_EntryHi/Lo写入TLB表项</span></span><br><span class="line"></span><br><span class="line">.<span class="built_in">set</span> reorder <span class="comment">//允许编译器优化</span></span><br><span class="line"></span><br><span class="line">NO_SUCH_ENTRY: </span><br><span class="line">    mtc0    t0, CP0_ENTRYHI <span class="comment">//将最开始存入t0的CP0_ENTRYHI取出</span></span><br><span class="line">    j       ra <span class="comment">//返回调用函数</span></span><br><span class="line">END(tlb_out)</span><br></pre></td></tr></table></figure>
-<h3 id="thinking-A-6-3-三级页表自映射">thinking A.6.3 三级页表自映射</h3>
-<blockquote>
-<p>问题：考虑39位三级页式存储，虚拟地址空间512GB，若三级页表的基地址为 $PT_{base}$ ，请计算三级页表页目录基地址；映射到页目录自身的页目录项（自映射）</p>
-</blockquote>
-<p>回答：</p>
-<p>页面大小 $2^{12}$字节 $= 4KB$<br>
-页表项大小 $2^3$字节<br>
-页表项数量 $4KB/8B = 512 = 2^9$项</p>
-<ol>
-<li>三级页表目录基地址</li>
+<ul>
+<li><code>GlobalQueue</code>：连接<code>InputThread</code>与<code>DispatchThread</code>，存储所有待分配的原始请求。</li>
+<li><code>RequestQueue</code>：每个电梯线程私有的任务队列，存储已分配但未完成的请求。</li>
+</ul>
+</li>
+<li><ol>
+<li><strong>运行逻辑与策略管理</strong>（绿色）</li>
 </ol>
-<p>基地址= $PT_{base} + (PT_{base} &gt;&gt; 12) * 8 + (PT_{base} &gt;&gt; 21) * 8$</p>
-<ol start="2">
-<li>自映射索引</li>
+<ul>
+<li><code>Shaft</code>：管理同一井道两个轿厢，处理双轿厢模式下的逻辑。</li>
+<li><code>ElevatorStrategy</code>：运行策略，封装LOOK算法，决定电梯在当前状态返回什么动作。</li>
+<li><code>Action</code>：定义电梯基础原子动作</li>
+</ul>
+</li>
+<li><ol>
+<li><strong>实体信息与工具支撑</strong>（黄色、紫色）</li>
 </ol>
-<p>虚拟地址高9位决定了访问哪一个页目录项<br>
-自映射项的索引是$PT_{base}$在页目录中的位置<br>
-$Index = PT_{base} &gt;&gt; 30$</p>
-<h3 id="thinking-2-6-函数调用与CPU访存流程">thinking 2.6 函数调用与CPU访存流程</h3>
-<blockquote>
-<p>问题：结合CPU访存流程与用户函数部分，尝试将函数调用与CPU访存流程对应起来，思考函数调用与CPU访存流程的关系</p>
-</blockquote>
-<p>回答：<br>
-<strong>访存流程：</strong><br>
-<img src="image-1.png" alt="alt text"><br>
-<strong>用户函数：</strong><br>
-<img src="image.png" alt="alt text"></p>
-<table>
-<thead>
-<tr>
-<th>CPU 访存环节</th>
-<th>内核函数</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查询 TLB</td>
-<td>tlb_invalidate / tlb_out</td>
-<td>硬件自动查；程序在修改后使其失效</td>
-</tr>
-<tr>
-<td>触发 TLB Miss</td>
-<td>do_tlb_refill</td>
-<td>硬件发现缓存没命中，强制切换到内核态</td>
-</tr>
-<tr>
-<td>寻找页表项</td>
-<td>page_lookup / pgdir_walk</td>
-<td>硬件自动走，程序在管理映射时调用</td>
-</tr>
-<tr>
-<td>分配新页面/页表</td>
-<td>page_alloc / passive_alloc</td>
-<td>发现映射不存在时，内核进行分配</td>
-</tr>
-<tr>
-<td>填写/返回结果</td>
-<td>page_insert</td>
-<td>建立VA→PA映射</td>
-</tr>
-</tbody>
-</table>
-<h3 id="thinking-2-7-其他体系结构的内存管理">thinking 2.7 其他体系结构的内存管理</h3>
-<blockquote>
-<p>问题：简单了解并叙述X86体系结构中的内存管理机制，比较X86和MIPS在内存管理上的区别</p>
-</blockquote>
-<p>回答：<br>
-X86内存管理是分段和分页两阶段的过程，其中有 <strong>硬件页表遍历的过程</strong><br>
-发生 TLB Miss时，MMU会根据CR3寄存器指向的基地址，去内存中逐级查找页表。</p>
 <ul>
-<li>若找到，硬件自动更新TLB；</li>
-<li>若页表项无效，则触发缺页异常转交内核处理</li>
-</ul>
-<p>主要区别：</p>
-<ul>
-<li>MIPS为两级页表，X86为四级页表；</li>
-<li>MIPS硬件只负责在TLB中匹配，若Miss则直接强制跳转汇编入口，通过代码将页表项填入；X86是硬件负责，Miss后CPU内部逻辑会自动遍历内存中页表。只有未分配时程序才会介入；</li>
-<li>MIPS页表结构无硬性规范；X86页表结构为硬件强制固定。</li>
-</ul>
-<h2 id="难点分析">难点分析</h2>
-<p>需要理解访存流程和内存映射布局</p>
-<h3 id="物理管理内存">物理管理内存</h3>
-<ul>
-<li>双向链表宏的展开和使用逻辑（le_prev是二级指针，指向前一个元素的le_next指针的地址）<br>
-<img src="image-2.png" alt="alt text"></li>
-<li>物理页面生存周期（pp_ref后page_free）</li>
-</ul>
-<h3 id="虚拟管理内存">虚拟管理内存</h3>
-<ul>
-<li>两级页表结构<br>
-<img src="image-3.png" alt="alt text"></li>
-<li><code>pgdir_walk</code>和<code>pgdir_insert</code>查找流程<br>
-<img src="image-4.png" alt="alt text"></li>
-</ul>
-<h3 id="访问内存与TLB重填">访问内存与TLB重填</h3>
-<ul>
-<li>4Kc中的<code>TLB</code>采用 <strong>奇偶页</strong> 设计，<code>VPN</code>的高19位和<code>ASID</code>作为<code>Key</code><br>
-一个映射 $ &lt;VPN, ASID&gt; → &lt;PFN, C, D, V, G&gt;$</li>
-<li>tlbr,tlbwi,tlbwr,tlbp指令</li>
-<li>维护TLB：
-<ul>
-<li>更新页表中虚拟地址对应页表项同时，将TLB中对应的旧表项无效化</li>
-<li>下一次访问该虚拟地址时，硬件触发TLB重填异常，OS对TLB进行重填。</li>
+<li><strong>请求</strong>（黄色）：</li>
+<li><code>Person</code>：乘客实体，记录基本信息方便调用。</li>
+<li><code>MaintInfo / UpdateInfo / RecycleInfo</code>：指令类。</li>
+<li><strong>辅助类</strong>（紫色）：</li>
+<li><code>FloorProcess</code>：楼层处理类，楼层预处理方便策略类调用。</li>
+<li><code>Output</code>：输出辅助类。</li>
 </ul>
 </li>
 </ul>
-<h2 id="实验体会">实验体会</h2>
-<p>需要阅读的代码和理解的内容相比lab1又多了很多。<br>
-对于访存流程其实上学期CO就已经学习过一些内容，但是实际上手的时候发现只是有一个大概的概念，具体实现还是会遇到很多问题。<br>
-对链表的操作也不是很熟练，无法自如使用各种宏来达到自己的目的。<br>
-每个lab需要学习的内容感觉很多，本次lab主要学习了物理内存和虚拟内存两部分，对于tlb重填部分掌握程度并不高，后续有时间需要加强一下。</p>
-<p>感觉很难依靠自己根据指导书填出空的内容，每次都是对着答案对着讲解才能慢慢理解一些，对于知识点的掌握很零碎，希望后续能加深对操作系统整体的理解。</p>
-<p>关于上机，自映射的内容课上没有学的很明白，上机罚坐1.5h QAQ，其实感觉理论和上机结合紧密一点也挺好的，可以对课上的知识点理解得更深一些，后面要抓紧把前面讲过的理论内容复习一遍！</p>
+<h2 id="同步块的设置-amp-锁的选择"><a href="#同步块的设置-amp-锁的选择" class="headerlink" title="同步块的设置 &amp; 锁的选择"></a>同步块的设置 &amp; 锁的选择</h2><p>在本单元作业中，我主要采用了<code>synchronized</code>关键字来保护共享资源。</p>
+<h3 id="锁的选择"><a href="#锁的选择" class="headerlink" title="锁的选择"></a>锁的选择</h3><p>所有的<code>RequestQueue</code>和<code>GlobalQueue</code>内部使用<code>synchronized</code>保护其持有的<code>LinkedList</code>。<br>与Lock相比，感觉<code>synchronized</code>的自动释放和等待/通知机制更不容易出错，而且在临界区逻辑较短、竞争并不激烈时，性能差距几乎可以忽略。（对Lock还不是很熟悉）</p>
+<h3 id="同步块设置"><a href="#同步块设置" class="headerlink" title="同步块设置"></a>同步块设置</h3><p>同步块主要设置在生产者存入数据（如<code>addRequest</code>）和消费者提取数据（如<code>getOne</code>）的方法上。生产者线程调用<code>addRequest</code>时会获取队列的锁，消费者线程在 <code>waitNewRequest</code>或<code>getRequst</code>时也会竞争同一把锁。<br>所有同步块规格尽量小，只保护对共享数据结构的操作，不把可能耗时的 I/O 或计算逻辑放在锁内，避免了长时间持有锁导致其他线程阻塞。</p>
+<p>处理语句关系：锁确保了在多电梯并发访问同一队列时，请求的分发和提取是原子性的。同时，利用<code>wait()</code>和<code>notifyAll()</code>机制，让电梯在无任务时进入休眠，避免了轮询造成的CPU占用。</p>
+<p>此外，电梯自身的一些状态变量如<code>state、minFloor、info</code>等,由于可能被调度线程读取、被电梯线程修改，使用了<code>volatile</code>修饰，保证多线程间的可见性。</p>
+<h2 id="三次作业中调度器设计"><a href="#三次作业中调度器设计" class="headerlink" title="三次作业中调度器设计"></a>三次作业中调度器设计</h2><h3 id="调度器和程序中线程进行交互"><a href="#调度器和程序中线程进行交互" class="headerlink" title="调度器和程序中线程进行交互"></a>调度器和程序中线程进行交互</h3><p>调度器<code>DispatchThread</code>是中转者，分别和输入线程与电梯线程交互。</p>
+<ul>
+<li>与输入线程交互：它作为<code>GlobalQueue</code>的消费者，不断获取<code>InputThread</code>放入的请求。</li>
+<li>与电梯线程交互：它通过代价函数计算，将请求推送至对应<code>ElevatorThread</code> 的<code>RequestQueue</code>队列中。</li>
+</ul>
+<p>此外调度器通过读取电梯线程中由<code>volatile</code>修饰的状态变量，判断电梯是否处于维修或改造状态。</p>
+<p>从交互进程的角度看，调度器与电梯线程的通信主要通过两个渠道：一是每个电梯自己的<code>RequestQueue</code>，二是电梯对象上的<code>volatile</code>指令。调度器本身并不持有电梯的锁，也不会操作电梯的内部乘客列表，这样既降低了锁竞争，也保证了电梯自身的运行状态不受调度器干扰。</p>
+<h3 id="调度策略的性能"><a href="#调度策略的性能" class="headerlink" title="调度策略的性能"></a>调度策略的性能</h3><ol>
+<li><p>运行策略<br>首先运行策略采用了主流的LOOK算法，主要好处体现在以下方面：</p>
+<ul>
+<li>电梯不会盲目运行，而是通过<code>hasTaskAhead</code>判断，一旦前方没有本梯可处理的请求，电梯立即<code>REVERSE</code>或<code>WAIT</code>。</li>
+<li>减少无效空跑，避免了大量空载行程，直接降低了电量消耗。</li>
+<li>只有当楼层有匹配方向的乘客且电梯未超重时才开门，减少了不必要的启停能耗。</li>
+</ul>
+</li>
+<li><p>调度逻辑：<br>调度逻辑主要采用了代价函数。（感觉影子电梯有点玄学且有点难写…）<br>我在<code>DispatchThread</code>的<code>getCost</code>方法中，通过加权计算实现选择：</p>
+<ul>
+<li>时间指标：<code>dis * 1.0</code> 确保分配距离最近的电梯；<code>bonus = 8.0</code>大幅奖励顺路电梯，减少乘客等待和绕路时间。</li>
+<li>能效指标：<code>totalTask * 2.0</code> 对任务多的电梯进行适当惩罚。</li>
+<li>代价函数设置阈值，如果代价过大暂时不派发。以应对大量电梯维修时的大量乘客需求问题。</li>
+</ul>
+</li>
+<li><p>其他策略：<br>主要体现在维修时或者分轿厢时的接人踢人。<br>一旦进入<code>REP_ACCEPT</code>及类似有时限的状态，调度器在<code>getEle</code>层面拦截，不再向该梯派发新任务。电梯仅处理已在车内（inEle）的任务。<br>且如果路上有顺路的乘客，直接送到（3-4次，根据时间限制具体来定）；如果不顺路且方向相反，接到指令的楼层直接踢下；如果顺路但是距离很远，送到检修楼层踢下。</p>
+</li>
+</ol>
+<h3 id="三次作业中的调度策略"><a href="#三次作业中的调度策略" class="headerlink" title="三次作业中的调度策略"></a>三次作业中的调度策略</h3><h4 id="第一次初始任务"><a href="#第一次初始任务" class="headerlink" title="第一次初始任务"></a>第一次初始任务</h4><p>每个乘客请求已指定电梯ID。调度器仅仅是形式上的设计，仅负责将请求直接按输入分发给对应的电梯线程。</p>
+<h4 id="第二次迭代"><a href="#第二次迭代" class="headerlink" title="第二次迭代"></a>第二次迭代</h4><p>设计了<strong>自由竞争与代价函数</strong>。调度器根据Cost=距离+任务数*权重-顺路优势，动态选择最优电梯。引入了维护请求处理，代价过高时（比如电梯维护时）将内部请求退回 <code>GlobalQueue</code>重排。</p>
+<h4 id="第三次迭代"><a href="#第三次迭代" class="headerlink" title="第三次迭代"></a>第三次迭代</h4><p>调度器大体设计不变，支持双轿厢模式。调度器只需将请求分发给特定的<code>Shaft</code>，由井道内部协调主备轿厢。</p>
+<h2 id="关于bug"><a href="#关于bug" class="headerlink" title="关于bug"></a>关于bug</h2><p>第二次作业和第三次作业都是被hack了2次，hack了7次，下面具体分析：</p>
+<h3 id="分析自己出现的bug"><a href="#分析自己出现的bug" class="headerlink" title="分析自己出现的bug"></a>分析自己出现的bug</h3><ul>
+<li><p>bug1：通过计算代价函数来判断选择哪个电梯，但是如果代价过高则暂时不选择，回退到主队列中。但是对于新来的请求，包括维修请求，都从尾部加入队列，如果大批量请求的话，会没办法及时维修，超过7s。<br>修改方法也很简单，只要把维修等需要及时响应的请求放在队头即可。</p>
+</li>
+<li><p>bug2：hw7中设置了state等信息，但是没有使用volatile强制同步，其他线程没有及时获取信息。</p>
+</li>
+</ul>
+<h3 id="别人程序的bug"><a href="#别人程序的bug" class="headerlink" title="别人程序的bug"></a>别人程序的bug</h3><ul>
+<li>bug1：全部电梯都维修的时候，有些代码会固定返回一个电梯，导致出错。</li>
+<li>bug2：不设置缓冲区或者类似功能，只要有请求就分派。如果五个电梯全部维修，再涌入大量请求，会超出要求时间导致无法通过。</li>
+</ul>
+<h3 id="对多线程程序的debug方法"><a href="#对多线程程序的debug方法" class="headerlink" title="对多线程程序的debug方法"></a>对多线程程序的debug方法</h3><ul>
+<li>输出调试：多线程不太适用断点调试，所以这个单元都采用了输出调试，比如在每个线程结束时输出信息等等。</li>
+<li>代码走读：顺着代码的思路完整看一遍，人工脑查。</li>
+<li>AI debug：给AI提供我出现问题的测试点，由AI提供一些可能的问题，由我排查确认。</li>
+<li>看CPU运行时间：CPU运行时间如果过长则重点检查一下CPU轮询的问题。</li>
+</ul>
+<h2 id="线程安全和层次化设计的理解"><a href="#线程安全和层次化设计的理解" class="headerlink" title="线程安全和层次化设计的理解"></a>线程安全和层次化设计的理解</h2><p>我认为线程安全在多线程程序中的核心问题主要是两个：可见性和原子性。我在这三次作业中解决它们的方法可以归结为两点：用<code>synchronized</code>保证原子操作，用<code>volatile</code>保证写入的可见性。</p>
+<p>层次化设计则让线程安全的维护成本大大降低。拿我的架构来说：<br>最底层的队列<code>GlobalQueue, RequestQueue</code>内部已经实现了所有必要的同步。调用者可以不用考虑锁的问题，只需要调用<code>addRequest</code>等方法，剩下的线程安全问题由队列类自己负责。<br>而电梯线程<code>ElevatorThread</code>内部维护了一组状态变量<code>state,info</code>等，这些变量要么是 <code>volatile</code>的，要么在被修改时持有对象锁。<code>Shaft</code>层提供了双轿厢模式下F2互斥的信号量。主备轿厢在需要进入F2时都必须先<code>acquireF2()</code>，离开后再<code>releaseF2()</code>。这个锁也在一定程度上避免了死锁。</p>
+<p><code>DispatchThread</code>完全处于顶层，不修改电梯内部数据结构，只通过队列或指令与下层通信，不会侵入电梯的状态管理，可以线程安全的边界限制在各自的类中。</p>
+<p>总之好的层次化设计一定程度上是可以辅助线程的安全性的。</p>
+<h2 id="大模型相关使用"><a href="#大模型相关使用" class="headerlink" title="大模型相关使用"></a>大模型相关使用</h2><h3 id="与大模型的分工"><a href="#与大模型的分工" class="headerlink" title="与大模型的分工"></a>与大模型的分工</h3><p>在本次作业中，我主要使用<code>gemini pro</code>作为辅助工具，分工大概是：<br>我来负责：核心逻辑设计、优化策略设计、调试决策。<br>大模型辅助我：提出其他优化策略、分析各种优化策略的优缺点、快速搭建评测机、初步定位bug。</p>
+<p>作业中大部分代码均为自己手敲。但是思路方面会借助大模型的框架构建。<br>尤其是电梯的优化策略问题，选择影子电梯、量子电梯，还是代价函数构建，还是自由竞争。由于策略过多所以在优化方面和AI探讨很多。由AI给出每种方法的优缺点，复杂的地方，以及建议程度。</p>
+<h3 id="其余使用大模型情况"><a href="#其余使用大模型情况" class="headerlink" title="其余使用大模型情况"></a>其余使用大模型情况</h3><ul>
+<li>找bug ：<ul>
+<li>自己的作业：每次写完作业之后都会先交给大模型粗略检查一遍是否有明显bug再提交</li>
+<li>互测同学的代码：也基本会先由大模型大致检测一遍哪里最有可能出现问题，我再详细看一下具体对应部分的代码</li>
+</ul>
+</li>
+<li>评测机搭建：完全由大模型生成，自己只根据效果和大模型进行多轮修改交互</li>
+</ul>
+<h3 id="评估效果"><a href="#评估效果" class="headerlink" title="评估效果"></a>评估效果</h3><p>在面临多线程电梯这样的复杂任务时大模型具有什么优势，会遇到什么困难？</p>
+<ul>
+<li><p>优点：在面临多线程电梯这种复杂任务时，大模型的优势在于快速生成符合题目要求的框架代码，可以给我提供初步思路。此外，在策略选择如上面提到的影子电梯、代价函数、自由竞争等时，它可以给出清晰的对比和建议，帮助我快速决定方向。</p>
+</li>
+<li><p>问题：多线程的时序问题非常微妙很难复现，大模型经常会生成看起来正确，但实际依然不对的代码。可能出现死锁或者不满足题目移动要求等一系列问题，需要自己去审查和修正。</p>
+</li>
+</ul>
+<p>另外，让AI生成评测机时，虽然速度很快，但初始生成的测试数据强度很弱且不一定正确，基本只能检验正常逻辑；基本无法仅仅靠大模型构造出能触发bug的数据。（评测的时候发现输出错误一般是评测机写错了…）</p>
+<h3 id="使用大模型感受"><a href="#使用大模型感受" class="headerlink" title="使用大模型感受"></a>使用大模型感受</h3><p>大模型能帮你跳过枯燥的架构搭建阶段，以及辅助纠结的策略选择问题。但在处理多线程这种对时序很敏感的复杂逻辑时还是需要自己多加思索。</p>
+<h2 id="本单元心得体会（兼有本人碎碎念）"><a href="#本单元心得体会（兼有本人碎碎念）" class="headerlink" title="本单元心得体会（兼有本人碎碎念）"></a>本单元心得体会（兼有本人碎碎念）</h2><p>U2这个单元让我初步感受到了多线程编程的魅力和痛苦（？）。<br>第一次实验课的时候觉得生产者-消费者模式不过如此…但越往后加入的东西越来越多，尤其是第三次双轿厢一加上，各种问题就会出现。（比如太空电梯…）</p>
+<p>而且多线程问题不可复现好麻烦…发现一个bug不知道再找多久才能再出现一次。第一次运行没问题的数据在测试的时候也有可能出问题。</p>
+<p>研讨课上听到大家的各种实现，发现同样是LOOK算法，但是会有很多小小变种。<br>分配策略更是五花八门，多听听大家的思路（小巧思）还是很有意思的。</p>
+<p>此外对于性能分数的心态经历了变化，从执着于最优策略逐渐变成保证正确性就好…感觉优化无止境而且越到最后看着自己的代码越心累…在正确性和优化之间作取舍是合理的。</p>
+<h2 id="未来建议"><a href="#未来建议" class="headerlink" title="未来建议"></a>未来建议</h2><p>现在的性能分计算公式很清晰，但强测后只得到一个总分。能否给出单项指标（电量或者时间）的分数，这样有可能进行更有针对性的优化？</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>这个月的电梯夹杂在冯如杯中，写的非常匆忙。但也依然还是有一些收获。<br>虽然电梯月已经过去，但大概之后的很长一段时间看到电梯都会会心一笑了。</p>
+<blockquote>
+<p>感谢U2所有老师和助教的辛苦付出~</p>
+</blockquote>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/2026-OO-U2总结/" data-toggle="tooltip" data-placement="top" title="2026-OO-U2总结">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/OS-Lab1-实验报告/" data-toggle="tooltip" data-placement="top" title="OS Lab1 实验报告">Next Post &rarr;</a>
+            <a href="/cn/OS-Lab2-实验报告/" data-toggle="tooltip" data-placement="top" title="OS Lab2 实验报告">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -760,7 +669,7 @@ X86内存管理是分段和分页两阶段的过程，其中有 <strong>硬件�
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=OS Lab2 实验报告&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/OS-Lab2-实验报告/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=2026-OO-U2总结&body=Hi,I found this website and thought you might like it https://nuyoah-10.github.io/cn/2026-OO-U2总结/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -795,7 +704,7 @@ X86内存管理是分段和分页两阶段的过程，其中有 <strong>硬件�
       repo: '',
       owner: '',
       admin: '',
-      id: 'Thu Apr 16 2026 16:35:55 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Apr 29 2026 10:44:11 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -848,7 +757,7 @@ X86内存管理是分段和分页两阶段的过程，其中有 <strong>硬件�
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">思考题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-1-%E7%A8%8B%E5%BA%8F%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">thinking 2.1 程序代码中的地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-2-%E9%93%BE%E8%A1%A8%E5%AE%8F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">thinking 2.2 链表宏</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-3-Page-list%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">thinking 2.3 Page_list结构体</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-4-%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">thinking 2.4 地址空间</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-5-tlb-invalidate"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">thinking 2.5 tlb_invalidate</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-A-6-3-%E4%B8%89%E7%BA%A7%E9%A1%B5%E8%A1%A8%E8%87%AA%E6%98%A0%E5%B0%84"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">thinking A.6.3 三级页表自映射</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-6-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%B8%8ECPU%E8%AE%BF%E5%AD%98%E6%B5%81%E7%A8%8B"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">thinking 2.6 函数调用与CPU访存流程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#thinking-2-7-%E5%85%B6%E4%BB%96%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">thinking 2.7 其他体系结构的内存管理</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9A%BE%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">难点分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%A9%E7%90%86%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">物理管理内存</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%99%9A%E6%8B%9F%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">虚拟管理内存</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98%E4%B8%8ETLB%E9%87%8D%E5%A1%AB"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">访问内存与TLB重填</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">实验体会</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E4%BD%9C%E4%B8%9A%E6%9C%80%E7%BB%88%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">迭代作业最终架构设计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E5%9D%97%E7%9A%84%E8%AE%BE%E7%BD%AE-amp-%E9%94%81%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">同步块的设置 &amp; 锁的选择</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%94%81%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">锁的选择</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E5%9D%97%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">同步块设置</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A%E4%B8%AD%E8%B0%83%E5%BA%A6%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三次作业中调度器设计</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B0%83%E5%BA%A6%E5%99%A8%E5%92%8C%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%BA%BF%E7%A8%8B%E8%BF%9B%E8%A1%8C%E4%BA%A4%E4%BA%92"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">调度器和程序中线程进行交互</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">调度策略的性能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A%E4%B8%AD%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AD%96%E7%95%A5"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">三次作业中的调度策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%88%9D%E5%A7%8B%E4%BB%BB%E5%8A%A1"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">第一次初始任务</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%BF%AD%E4%BB%A3"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">第二次迭代</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%BF%AD%E4%BB%A3"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">第三次迭代</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Ebug"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于bug</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E6%9E%90%E8%87%AA%E5%B7%B1%E5%87%BA%E7%8E%B0%E7%9A%84bug"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">分析自己出现的bug</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%AB%E4%BA%BA%E7%A8%8B%E5%BA%8F%E7%9A%84bug"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">别人程序的bug</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%A8%8B%E5%BA%8F%E7%9A%84debug%E6%96%B9%E6%B3%95"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">对多线程程序的debug方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%92%8C%E5%B1%82%E6%AC%A1%E5%8C%96%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">线程安全和层次化设计的理解</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">大模型相关使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%88%86%E5%B7%A5"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">与大模型的分工</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%B6%E4%BD%99%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%83%85%E5%86%B5"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">其余使用大模型情况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%84%E4%BC%B0%E6%95%88%E6%9E%9C"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">评估效果</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%84%9F%E5%8F%97"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">使用大模型感受</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AC%E5%8D%95%E5%85%83%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A%EF%BC%88%E5%85%BC%E6%9C%89%E6%9C%AC%E4%BA%BA%E7%A2%8E%E7%A2%8E%E5%BF%B5%EF%BC%89"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">本单元心得体会（兼有本人碎碎念）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AA%E6%9D%A5%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">未来建议</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">写在最后</span></a></li></ol>
         
         </div>
       </aside>
@@ -871,7 +780,9 @@ X86内存管理是分段和分页两阶段的过程，其中有 <strong>硬件�
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#OS" title="OS">OS</a>
+            <a class="tag" href="/tags/#OO" title="OO">OO</a>
+            
+            <a class="tag" href="/tags/#U2" title="U2">U2</a>
             
           </div>
         </section>
