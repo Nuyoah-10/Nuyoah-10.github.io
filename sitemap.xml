@@ -223,7 +223,7 @@
   </url>
   
   <url>
-    <loc>https://nuyoah-10.github.io/tags/U1/</loc>
+    <loc>https://nuyoah-10.github.io/tags/U2/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -231,6 +231,13 @@
   
   <url>
     <loc>https://nuyoah-10.github.io/tags/OS/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://nuyoah-10.github.io/tags/U1/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -279,13 +286,6 @@
   </url>
   
   <url>
-    <loc>https://nuyoah-10.github.io/tags/P5/</loc>
-    <lastmod>2026-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://nuyoah-10.github.io/tags/P6/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -293,7 +293,7 @@
   </url>
   
   <url>
-    <loc>https://nuyoah-10.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
+    <loc>https://nuyoah-10.github.io/tags/P5/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -307,7 +307,7 @@
   </url>
   
   <url>
-    <loc>https://nuyoah-10.github.io/tags/U2/</loc>
+    <loc>https://nuyoah-10.github.io/tags/Hexo-Theme-LiveMyLife/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
